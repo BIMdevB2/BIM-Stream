@@ -2,51 +2,53 @@
 
 ## 1. Overview and goals
 
-B.I.M Stream (Be In your Mood Stream) is an application where users can publish videos, 
+B.I.M Stream (Be In your Mood Stream) is an application where users can publish videos,
 watch and broadcast live streams, react to content, and participate in conversations.
 
 The frontend will be developed in ReactJS.
 
-We use a **feature-based** organization: each contibutor owns a coherent user journey, 
+We use a **feature-based** organization: each contibutor owns a coherent user journey,
 while the application structure and reusable UI components are shared.
 
 Goals:
+
 - Avoid building three visually inconsistent interfaces.
 - Reduce simultaneous changes to the same files.
 - Reuse useful components and logic.
 - Integrate everyone's work regularly.
 - Make progress with mock data before the backend is available.
 
-The routes, filenames, colors, and contracts below are proposals to agree on together. 
+The routes, filenames, colors, and contracts below are proposals to agree on together.
 Details that are difficult to read in the screenshot should be checked against the original designs.
 
 ## 2. Pages and routes
 
-| Screen | React page | Proposed route |
-|---|---|---|
-| 1 — Registration | `RegisterPage` | `/register` |
-| 2 — Login | `LoginPage` | `/login` |
-| 3 — Home / discovery | `HomePage` | `/` |
-| 4 — Live stream and chat | `LivePage` | `/live/:streamId` |
-| 5 — Video on demand | `VideoPage` | `/videos/:videoId` |
-| 6 — Private messages | `MessagesPage` | `/messages` and `/messages/:conversationId` |
-| 7 — User profile | `ProfilePage` | `/users/:username` |
-| 8 — Moderation and administration | `ModerationPage` | `/admin/moderation` |
+| Screen                             | React page         | Proposed route                                  |
+| ---------------------------------- | ------------------ | ----------------------------------------------- |
+| 1 — Registration                  | `RegisterPage`   | `/register`                                   |
+| 2 — Login                         | `LoginPage`      | `/login`                                      |
+| 3 — Home / discovery              | `HomePage`       | `/`                                           |
+| 4 — Live stream and chat          | `LivePage`       | `/live/:streamId`                             |
+| 5 — Video on demand               | `VideoPage`      | `/videos/:videoId`                            |
+| 6 — Private messages              | `MessagesPage`   | `/messages` and `/messages/:conversationId` |
+| 7 — User profile                  | `ProfilePage`    | `/users/:username`                            |
+| 8 — Moderation and administration | `ModerationPage` | `/admin/moderation`                           |
 
 Before implementing each screen, identify reusable elements: top bar, sidebar, video cards, avatars, buttons, and forms.
 
 Follow this sequence:
+
 1. Break down the design into components.
 2. Build a static version using the data model.
 3. Add interactions and state.
 
 ## 3. Component categories
 
-| Category | Examples | Location |
-|---|---|---|
-| Generic UI components | `Button`, `Input`, `Avatar`, `Modal`, `Badge` | `shared/ui/` |
-| Reusable domain components | `VideoCard`, `VideoPlayer`, `ReactionBar` | Inside the relevant feature |
-| Page-specific components | `ModerationQueue`, `ProfileHeader`, `LiveChat` | Inside the relevant feature |
+| Category                   | Examples                                                | Location                    |
+| -------------------------- | ------------------------------------------------------- | --------------------------- |
+| Generic UI components      | `Button`, `Input`, `Avatar`, `Modal`, `Badge` | `shared/ui/`              |
+| Reusable domain components | `VideoCard`, `VideoPlayer`, `ReactionBar`         | Inside the relevant feature |
+| Page-specific components   | `ModerationQueue`, `ProfileHeader`, `LiveChat`    | Inside the relevant feature |
 
 A component used only once can stay local. Do not try to make everything generic from the start.
 
@@ -202,11 +204,11 @@ With React Router, use nested routes and `<Outlet />` inside layouts to render c
 
 Each teammate should deliver complete functionality: interface, states, integration, and tests. Avoid a rigid split such as one person handling CSS, another components, and another APIs.
 
-| Owner | Main scope | Related shared elements |
-|---|---|---|
-| Teammate A | Registration, login, profile | Forms, avatars, session management |
-| Teammate B | Home, video on demand | Video cards, player, grids, reactions, comments |
-| Teammate C | Live streaming and chat, private messages, moderation | Message composition, lists, moderation table |
+| Owner      | Main scope                                            | Related shared elements                         |
+| ---------- | ----------------------------------------------------- | ----------------------------------------------- |
+| Teammate A | Registration, login, profile                          | Forms, avatars, session management              |
+| Teammate B | Home, video on demand                                 | Video cards, player, grids, reactions, comments |
+| Teammate C | Live streaming and chat, private messages, moderation | Message composition, lists, moderation table    |
 
 ### Balance the workload
 
@@ -256,11 +258,11 @@ Centralize colors, spacing, and border randing in `shared/styles/tokens.css`.
 
 ### Initial work allocation
 
-| Teammate | Initial work |
-|---|---|
-| A | Forms, buttons, inputs |
-| B | Cards, player foundation, mock video data |
-| C | Layout, navigation, route list |
+| Teammate | Initial work                              |
+| -------- | ----------------------------------------- |
+| A        | Forms, buttons, inputs                    |
+| B        | Cards, player foundation, mock video data |
+| C        | Layout, navigation, route list            |
 
 Review this foundation together before building all screens.
 
@@ -314,6 +316,7 @@ main
 ```
 
 Rules:
+
 - Keep `main` reusable.
 - Each branch covers a limited task, not several weeks of work.
 - Submit every change through a pull request.
@@ -337,6 +340,7 @@ Remaining work: (optional)
 ### Example: splitting messaging work
 
 Avoid one pull request for the entire messaging feature. Prefer:
+
 1. Visual structure.
 2. Conversation selection.
 3. Message history integration.
@@ -345,13 +349,13 @@ Avoid one pull request for the entire messaging feature. Prefer:
 
 ## 10. Development phases
 
-| Phase | Work | Expected outcome |
-|---|---|---|
-| 1 — Foundation | Project setup, styles, layouts, routes, base components | Navigable application |
-| 2 — Static version | Eight screens with mock data | Visually consistent interface |
-| 3 — Local interactions | Forms, tabs, filters, conversation selection | Testable user journeys |
-| 4 — Integration | Session, API, video playback, real-time functionality | Connected features |
-| 5 — Validation | Errors, permissions, responsive behavior, tests | Demo-ready version |
+| Phase                   | Work                                                    | Expected outcome              |
+| ----------------------- | ------------------------------------------------------- | ----------------------------- |
+| 1 — Foundation         | Project setup, styles, layouts, routes, base components | Navigable application         |
+| 2 — Static version     | Eight screens with mock data                            | Visually consistent interface |
+| 3 — Local interactions | Forms, tabs, filters, conversation selection            | Testable user journeys        |
+| 4 — Integration        | Session, API, video playback, real-time functionality   | Connected features            |
+| 5 — Validation         | Errors, permissions, responsive behavior, tests         | Demo-ready version            |
 
 Do not leave live playback and real-time integration until the end. Run an early technical proof of concept with the intended backend solution, even during the static phase.
 
@@ -373,6 +377,7 @@ For administration, distinguish the interface from permissions: plan validation 
 ## 12. Daily coordination
 
 Hold a daily check-in of approximately ten minutes:
+
 1. What has been integrated.
 2. What comes next.
 3. Blockers.
