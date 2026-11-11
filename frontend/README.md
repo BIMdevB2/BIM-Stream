@@ -152,6 +152,9 @@ bim-stream-frontend/
 │   │   ├── videos.js
 │   │   ├── streams.js
 │   │   └── conversations.js
+│   ├── assets/
+│   ├── App.css
+│   ├── index.css
 │   └── main.jsx
 ├── tests/
 │   └── e2e/
