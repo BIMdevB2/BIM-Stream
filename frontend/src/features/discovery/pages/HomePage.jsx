@@ -1,4 +1,3 @@
-
 import FeaturedContent from "../components/FeaturedContent"
 import MoodFilters from "../components/MoodFilters"
 
