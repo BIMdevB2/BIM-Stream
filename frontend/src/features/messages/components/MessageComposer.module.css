@@ -1,0 +1,37 @@
+.attachBtn {
+  color: var(--msg-muted);
+  background: transparent;
+  border: none;
+}
+
+.input {
+  background: var(--msg-bg);
+  border: 1px solid var(--msg-border);
+  color: var(--msg-text);
+  border-radius: 10px;
+  padding: 9px 14px;
+}
+
+.input::placeholder {
+  color: var(--msg-muted);
+}
+
+.input:focus {
+  background: var(--msg-bg);
+  color: var(--msg-text);
+  border-color: var(--msg-primary);
+  box-shadow: none;
+}
+
+.sendBtn {
+  background: var(--msg-primary);
+  color: var(--msg-bg);
+  border: none;
+  border-radius: 10px;
+  padding: 9px 16px;
+}
+
+.hint {
+  font-size: 11px;
+  color: var(--msg-muted);
+}

@@ -1,0 +1,60 @@
+.page {
+  --msg-bg: var(--color-bg, #0b0d10);
+  --msg-surface: var(--color-surface, #14181f);
+  --msg-surface-elevated: #1b2029;
+  --msg-border: var(--color-border, #282e38);
+  --msg-text: var(--color-text, #f5f6f8);
+  --msg-text-secondary: #b4bac5;
+  --msg-muted: var(--color-muted, #9ca3af);
+  --msg-primary: var(--color-primary, #ff8a24);
+  --msg-primary-soft: rgba(255, 138, 36, 0.14);
+  --msg-primary-border: rgba(255, 138, 36, 0.35);
+  --msg-online: #22c55e;
+
+  padding: 1.5rem 2rem;
+  min-height: calc(100vh - 64px);
+  background: var(--msg-bg);
+  color: var(--msg-text);
+}
+
+.mutedText {
+  color: var(--msg-muted);
+}
+
+.secondaryText {
+  color: var(--msg-text-secondary);
+}
+
+.newMsgBtn {
+  background: var(--msg-primary);
+  color: var(--msg-bg);
+  border: none;
+  border-radius: var(--radius-sm, 6px);
+}
+
+.shell {
+  display: grid;
+  grid-template-columns: 380px 1fr;
+  border: 1px solid var(--msg-border);
+  border-radius: 16px;
+  overflow: hidden;
+  background: var(--msg-surface);
+  min-height: 760px;
+}
+
+.sidebarCol {
+  min-width: 0;
+  border-right: 1px solid var(--msg-border);
+}
+
+.threadCol {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+@media (max-width: 991px) {
+  .shell {
+    grid-template-columns: 1fr;
+  }
+}

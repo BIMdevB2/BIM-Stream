@@ -1,80 +1,66 @@
-import { Link } from 'react-router';
 import styles from './MessageThread.module.css';
 
-export default function MessageThread({
-  conversation,
-  currentUser,
-  onDeleteConversation,
-  children,
-}) {
-  if (!conversation) {
-    return (
-      <section className={`d-flex align-items-center justify-content-center h-100 ${styles.panel}`}>
-        <p className={`mb-0 ${styles.mutedText}`}>Select a conversation to start messaging.</p>
-      </section>
-    );
-  }
-
-  const { user, messages, status, dateLabel } = conversation;
+export default function MessageThread({ conversation, currentUser, children }) {
+  const { user, status, dateLabel, messages } = conversation;
 
   return (
-    <section className={`d-flex flex-column h-100 ${styles.panel}`}>
-      <header className={`d-flex align-items-center justify-content-between px-3 py-2 ${styles.header}`}>
+    <div className={`d-flex flex-column h-100 ${styles.thread}`}>
+      {/* Header */}
+      <div className={`d-flex align-items-center justify-content-between px-4 py-3 ${styles.header}`}>
         <div className="d-flex align-items-center gap-3">
-          <div className="position-relative">
-            <img
-              src={user.avatar}
-              alt={user.name}
-              className={`rounded-circle ${styles.avatar}`}
-            />
-            {user.isOnline && (
-              <span className={`position-absolute bottom-0 end-0 rounded-circle ${styles.onlineDot}`} />
-            )}
+          <div className={styles.avatarWrap}>
+            <img src={user.avatar} alt={user.name} className={styles.avatar} />
+            {user.online && <span className={styles.onlineDot} />}
           </div>
           <div>
-            <div className="d-flex align-items-center gap-1">
-              <h2 className="h6 mb-0 fw-semibold">{user.name}</h2>
-              {user.isVerified && <span className={styles.verified}>✓</span>}
+            <div className="d-flex align-items-center gap-1 fw-semibold">
+              <span>{user.name}</span>
+              {user.verified && <span className={styles.verified}>✓</span>}
             </div>
-            <p className={`mb-0 small ${styles.secondaryText}`}>
-              {user.username} · {user.statusText}
-            </p>
+            <div className={styles.subline}>
+              {user.category || 'Creation & cinema'} · {user.online ? 'Online now' : 'Offline'}
+            </div>
           </div>
         </div>
 
-        <button
-          type="button"
-          className={`btn btn-sm ${styles.deleteBtn}`}
-          onClick={() => onDeleteConversation(conversation.id)}
-        >
-          Delete conversation
-        </button>
-      </header>
+        <div className="d-flex align-items-center gap-2">
+          {status === 'accepted' && (
+            <span className={styles.acceptedBadge}>Accepted</span>
+          )}
+          <button type="button" className={`btn btn-sm ${styles.deleteBtn}`}>
+            🗑 Delete conversation
+          </button>
+        </div>
+      </div>
 
-      <div className="flex-grow-1 overflow-auto p-3 d-flex flex-column gap-3">
-        {dateLabel && (
-          <span className={`align-self-center badge rounded-pill px-3 py-2 fw-normal ${styles.dateBadge}`}>
-            {dateLabel}
-          </span>
-        )}
+      {/* Messages area */}
+      <div className={`flex-grow-1 px-4 py-3 d-flex flex-column gap-3 ${styles.body}`}>
+        <div className="text-center my-1">
+          <span className={styles.datePill}>{dateLabel}</span>
+        </div>
 
         {messages.map((msg) => {
-          const isOwn = msg.senderId === currentUser.id;
+          const isMe = msg.senderId === currentUser.id;
+          const isInvite =
+            msg.type === 'live-invite' ||
+            msg.type === 'invite' ||
+            Boolean(msg.invite) ||
+            Boolean(msg.liveInvite);
 
-          if (msg.type === 'live_invitation') {
+          if (isInvite) {
+            const invite = msg.invite || msg.liveInvite || msg;
             return (
-              <div
-                key={msg.id}
-                className={`d-flex flex-column ${isOwn ? 'align-self-end' : 'align-self-start'} ${styles.msgRow}`}
-              >
-                <div className={`p-3 rounded-3 d-flex flex-column gap-1 ${styles.liveCard}`}>
-                  <span className={`fw-bold ${styles.liveBadge}`}>{msg.badge}</span>
-                  <h3 className="h6 mb-0 fw-semibold">{msg.liveTitle}</h3>
-                  <p className={`mb-2 small ${styles.secondaryText}`}>{msg.liveSubtitle}</p>
-                  <Link to="/live" className={`btn btn-sm fw-semibold ${styles.liveBtn}`}>
-                    {msg.buttonLabel}
-                  </Link>
-                </div>
+              <div key={msg.id} className={`p-3 rounded-3 ${styles.inviteCard}`}>
+                <span className={styles.inviteTag}>{invite.tag || 'LIVE INVITATION'}</span>
+                <h3 className="h6 fw-bold mt-2 mb-1">
+                  {invite.title || 'Cinema told by two.'}
+                </h3>
+                <p className={`small mb-3 ${styles.inviteMeta}`}>
+                  {invite.subtitle || 'Sadie Adler × Dutch van der Linde · Tonight at 21:00'}
+                </p>
+                <button type="button" className={`btn btn-sm fw-semibold px-3 ${styles.viewLiveBtn}`}>
+                  ((•)) View live
+                </button>
               </div>
             );
           }
@@ -82,28 +68,22 @@ export default function MessageThread({
           return (
             <div
               key={msg.id}
-              className={`d-flex flex-column gap-1 ${isOwn ? 'align-self-end' : 'align-self-start'} ${styles.msgRow}`}
+              className={`d-flex flex-column ${isMe ? 'align-items-end' : 'align-items-start'}`}
             >
-              <div className={`px-3 py-2 rounded-3 ${isOwn ? styles.bubbleOwn : styles.bubbleOther}`}>
-                <p className="mb-0">{msg.text}</p>
+              <div className={`px-3 py-2 rounded-3 ${isMe ? styles.bubbleMe : styles.bubbleThem}`}>
+                <div>{msg.text}</div>
+                <div className={`mt-1 ${isMe ? styles.metaMe : styles.metaThem}`}>
+                  {msg.time}
+                  {isMe && msg.read ? ' · Read ✓✓' : ''}
+                </div>
               </div>
-              <span className={`${isOwn ? 'align-self-end' : ''} ${styles.timestamp}`}>
-                {msg.time}
-              </span>
             </div>
           );
         })}
       </div>
 
-      <div className={`p-3 ${styles.footer}`}>
-        {status === 'pending' ? (
-          <p className={`mb-0 text-center small ${styles.secondaryText}`}>
-            Accept this message request in the inbox to enable replies.
-          </p>
-        ) : (
-          children
-        )}
-      </div>
-    </section>
+      {/* Composer slot */}
+      <div className={`px-4 py-3 ${styles.footer}`}>{children}</div>
+    </div>
   );
 }
