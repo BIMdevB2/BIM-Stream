@@ -1,0 +1,99 @@
+.panel {
+  background: var(--msg-bg);
+  color: var(--msg-text);
+  border-left: 1px solid var(--msg-border);
+}
+
+.header,
+.footer {
+  background: var(--msg-surface);
+  border-color: var(--msg-border) !important;
+}
+
+.header {
+  border-bottom: 1px solid var(--msg-border);
+}
+
+.footer {
+  border-top: 1px solid var(--msg-border);
+}
+
+.avatar {
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
+}
+
+.onlineDot {
+  width: 10px;
+  height: 10px;
+  background: var(--msg-online);
+  border: 2px solid var(--msg-surface);
+}
+
+.verified,
+.liveBadge {
+  color: var(--msg-primary);
+  font-size: 12px;
+}
+
+.secondaryText {
+  color: var(--msg-text-secondary);
+}
+
+.mutedText {
+  color: var(--msg-muted);
+}
+
+.deleteBtn {
+  border: 1px solid var(--msg-border);
+  color: var(--msg-text-secondary);
+}
+
+.deleteBtn:hover {
+  border-color: var(--msg-primary);
+  color: var(--msg-primary);
+}
+
+.dateBadge {
+  background: var(--msg-surface);
+  border: 1px solid var(--msg-border);
+  color: var(--msg-muted);
+}
+
+.msgRow {
+  max-width: 70%;
+}
+
+.bubbleOther {
+  background: var(--msg-surface-elevated);
+  border: 1px solid var(--msg-border);
+  font-size: 14px;
+}
+
+.bubbleOwn {
+  background: var(--msg-primary-soft);
+  border: 1px solid var(--msg-primary-border);
+  font-size: 14px;
+}
+
+.timestamp {
+  font-size: 11px;
+  color: var(--msg-muted);
+}
+
+.liveCard {
+  background: var(--msg-surface-elevated);
+  border: 1px solid var(--msg-primary-border);
+}
+
+.liveBtn {
+  background: var(--msg-primary);
+  color: var(--msg-bg);
+}
+
+.liveBtn:hover {
+  background: var(--msg-primary);
+  color: var(--msg-bg);
+  opacity: 0.9;
+}
