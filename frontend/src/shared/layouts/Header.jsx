@@ -1,8 +1,11 @@
+import { Dialog } from "bootstrap/dist/js/bootstrap.bundle.js";
+import { NavLink, Link } from "react-router";
+
 function Header() {
     return(
-        <div>
-            <h1>Header</h1>
-        </div>
+        <nav>
+            
+        </nav>
     );
 }
 
