@@ -1,4 +1,4 @@
-:root {
+/* :root {
     --text: #6b6375;
     --text-h: #08060d;
     --bg: #fff;
@@ -28,9 +28,9 @@
     @media (max-width: 1024px) {
         font-size: 16px;
     }
-}
+} */
 
-@media (prefers-color-scheme: dark) {
+/* @media (prefers-color-scheme: dark) {
     :root {
         --text: #9ca3af;
         --text-h: #f3f4f6;
@@ -48,20 +48,20 @@
     #social .button-icon {
         filter: invert(1) brightness(2);
     }
-}
+} */
 
-body {
+/* body {
     margin: 0;
-}
+} */
 
-#root {
+/* #root {
     width: 1126px;
     max-width: 100%;
     margin: 0 auto;
     text-align: center;
-    /* border-inline: 1px solid var(--border); */
+    border-inline: 1px solid var(--border); 
     min-height: 100svh;
     display: flex;
     flex-direction: column;
-    box-sizing: border-box;
-}
+    box-sizing: border-box; 
+} */
