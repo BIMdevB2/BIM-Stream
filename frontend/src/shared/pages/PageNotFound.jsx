@@ -7,7 +7,6 @@ function PageNotFound() {
         <>
             <h1>Error 404</h1>
             <p>Sorry, the page your are searching does not exist</p>
-            <button onClick={()=>navigate("/LoginPage")} className="btn-outline theme-inverse">Login</button>
             <button onClick={()=>navigate(-1)} className="btn-outline theme-inverse">Back</button>
         </>
     );

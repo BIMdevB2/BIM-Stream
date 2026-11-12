@@ -68,7 +68,7 @@ bim-stream-frontend/
 │   │   └── layouts/
 │   │       ├── AuthLayout.jsx
 │   │       ├── AppLayout.jsx
-│   │       └── AppLayout.module.css
+│   │       └── 
 │   ├── features/
 │   │   ├── auth/
 │   │   │   ├── pages/
@@ -146,9 +146,12 @@ bim-stream-frontend/
 │   │   │   └── client.js
 │   │   ├── hooks/
 │   │   ├── utils/
-│   │   └── styles/
-│   │       ├── tokens.css
-│   │       └── global.css
+│   │   ├── styles/
+│   │   │   ├── tokens.css
+│   │   │   └── global.css
+│   │   └── pages/
+│   │       └── PageNotFound.jsx
+│   │  
 │   ├── mocks/
 │   │   ├── users.js
 │   │   ├── videos.js
