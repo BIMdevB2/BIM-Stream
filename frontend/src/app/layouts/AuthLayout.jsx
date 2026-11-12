@@ -1,10 +1,13 @@
 import { Outlet } from "react-router";
-import Sidebar from "../../shared/layouts/Sidebar";
+import { NavLink } from "react-router";
 
 function AuthLayout() {
     return(
         <div>
-            <header><Sidebar /></header>
+            <header>
+                <NavLink to="/LoginPage" >Login</NavLink>
+                <NavLink to="/RegisterPage" >Register</NavLink>
+            </header>
             <main><Outlet /></main>
         </div>
     );
