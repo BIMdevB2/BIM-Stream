@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { Link } from "react-router";
-import "bootstrap-icons/font/bootstrap-icons.css";
 import styles from "./auth.module.css";
 
 function LoginPage() {
