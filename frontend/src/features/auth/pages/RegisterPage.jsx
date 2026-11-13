@@ -51,8 +51,8 @@ function RegisterPage() {
                                     <span className={styles.bar}></span>
                                 </div>
                                 <div className="d-flex gap-2">
-                                    <button type="button" className={styles.arrowBtn}><i className="bi bi-arrow-left"></i></button>
-                                    <button type="button" className={`${styles.arrowBtn} ${styles.arrowOrange}`}><i className="bi bi-arrow-right"></i></button>
+                                    <button type="button" className={styles.arrowBtn}><i className="fa-solid fa-arrow-left"></i></button>
+                                    <button type="button" className={`${styles.arrowBtn} ${styles.arrowOrange}`}><i className="fa-solid fa-arrow-right"></i></button>
                                 </div>
                             </div>
                         </div>
@@ -99,7 +99,7 @@ function RegisterPage() {
                                             className={`form-control ${styles.registerInput} pe-5`}
                                             value={user.password} onChange={handleChange} placeholder="8+ characters" required />
                                         <button type="button" className={styles.eyeBtn} onClick={() => setShowPassword(!showPassword)}>
-                                            <i className={showPassword ? "bi bi-eye" : "bi bi-eye-slash"}></i>
+                                            <i className={showPassword ? "fa-solid fa-eye" : "fa-solid fa-eye-slash"}></i>
                                         </button>
                                     </div>
                                 </div>
@@ -111,7 +111,7 @@ function RegisterPage() {
                                     </label>
                                 </div>
 
-                                <button type="submit" className={`btn w-100 ${styles.btnOrange}`}>Log In<i className="bi bi-arrow-right"></i></button>
+                                <button type="submit" className={`btn w-100 ${styles.btnOrange}`}>Create an account <i className="fa-solid fa-arrow-right"></i></button>
                             </form>
 
                             <div className="d-flex align-items-center my-4">
@@ -121,8 +121,8 @@ function RegisterPage() {
                             </div>
 
                             <div className="d-flex gap-3">
-                                <button type="button" className={`btn flex-fill ${styles.btnSocial}`}><i className="bi bi-google me-2"></i>Google</button>
-                                <button type="button" className={`btn flex-fill ${styles.btnSocial}`}><i className="bi bi-apple me-2"></i>Apple</button>
+                                <button type="button" className={`btn flex-fill ${styles.btnSocial}`}><i className="fa-brands fa-google me-2"></i>Google</button>
+                                <button type="button" className={`btn flex-fill ${styles.btnSocial}`}><i className="fa-brands fa-apple me-2"></i>Apple</button>
                             </div>
 
                             <p className="small text-secondary p-4 mb-0"><span className={styles.dot}></span> Encrypted sign-up · Cancel anytime</p>
