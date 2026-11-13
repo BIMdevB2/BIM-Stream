@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router";
-import AuthSplitLayout from "../components/AuthSplitLayout";
 import FormField from "../components/FormField";
 import SocialButtons from "../components/SocialButtons";
 import styles from "../components/auth.module.css";
@@ -23,18 +22,7 @@ function LoginPage() {
     }
 
     return (
-        <AuthSplitLayout
-            image="/images/bg_LoginPage.jpg"
-            tag="FEATURED THIS WEEK"
-            title="Stories beyond the horizon."
-            text="Enter worlds shaped by fearless filmmakers, curated in cinematic detail and ready whenever you are."
-            topText="New to B.I.M Stream ?"
-            topLink="/RegisterPage"
-            topLinkLabel="Sign up"
-            formTag="CONTINUE WATCHING"
-            formTitle="Welcome back"
-            formText="Log in to continue watching, pick up where you left off, and see what's new."
-        >
+        <>
             <form onSubmit={send}>
                 <FormField label="Email" type="email" name="email"
                     value={user.email} onChange={handleChange} placeholder="Arthur@exemple.fr" />
@@ -52,7 +40,7 @@ function LoginPage() {
                 </div>
 
                 <button type="submit" className={`btn w-100 ${styles.btnOrange}`}>
-                    Log In <i className="fa-solid fa-arrow-right"></i>
+                    Sign In <i className="fa-solid fa-arrow-right"></i>
                 </button>
             </form>
 
@@ -64,7 +52,7 @@ function LoginPage() {
             </div>
 
             <p className="small text-secondary p-4 mb-0">© 2026 B.I.M stream. All rights reserved.</p>
-        </AuthSplitLayout>
+        </>
     );
 }
 

@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { useNavigate } from "react-router";
-import AuthSplitLayout from "../components/AuthSplitLayout";
 import FormField from "../components/FormField";
 import SocialButtons from "../components/SocialButtons";
 import styles from "../components/auth.module.css";
@@ -23,18 +22,7 @@ function RegisterPage() {
     }
 
     return (
-        <AuthSplitLayout
-            image="/images/bg_RegisterPage.jpg"
-            tag="B.I.M ORIGINAL"
-            title="Your next world is waiting."
-            text="Continue every story across devices, with personal picks waiting whenever you return."
-            topText="Already have an account ?"
-            topLink="/LoginPage"
-            topLinkLabel="Log in"
-            formTag="START WATCHING"
-            formTitle="Create an account"
-            formText="Join B.I.M Stream and make every night feel like opening night."
-        >
+        <>
             <form onSubmit={send}>
                 <div className="row g-3">
                     <div className="col-6">
@@ -68,7 +56,7 @@ function RegisterPage() {
             <SocialButtons text="Or register with Google or Apple" />
 
             <p className="small text-secondary p-4 mb-0"><span className={styles.dot}></span> Encrypted sign-up · Cancel anytime</p>
-        </AuthSplitLayout>
+        </>
     );
 }
 

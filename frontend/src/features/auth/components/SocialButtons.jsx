@@ -14,8 +14,8 @@ function SocialButtons({ text }) {
             </div>
 
             <div className="d-flex gap-3">
-                <button type="button" className={`btn flex-fill ${styles.btnSocial}`}  onClick={()=>navigate("/GoogleLogin")}><i className="fa-brands fa-google me-2"></i>Google</button>
-                <button type="button" className={`btn flex-fill ${styles.btnSocial}`}><i className="fa-brands fa-apple me-2"  onClick={()=>navigate("/AppleLogin")}></i>Apple</button>
+                <button type="button" className={`btn flex-fill ${styles.btnSocial}`} onClick={()=>navigate("/GoogleLogin")}><i className="fa-brands fa-google me-2"></i>Google</button>
+                <button type="button" className={`btn flex-fill ${styles.btnSocial}`} onClick={()=>navigate("/AppleLogin")}><i className="fa-brands fa-apple me-2"></i>Apple</button>
             </div>
         </>
     );
