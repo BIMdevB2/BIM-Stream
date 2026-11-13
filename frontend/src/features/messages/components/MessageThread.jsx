@@ -1,4 +1,4 @@
-import styles from './MessageThread.module.css';
+import styles from "./MessageThread.module.css";
 
 export default function MessageThread({ conversation, currentUser, children }) {
   const { user, status, dateLabel, messages } = conversation;
@@ -6,7 +6,9 @@ export default function MessageThread({ conversation, currentUser, children }) {
   return (
     <div className={`d-flex flex-column h-100 ${styles.thread}`}>
       {/* Header */}
-      <div className={`d-flex align-items-center justify-content-between px-4 py-3 ${styles.header}`}>
+      <div
+        className={`d-flex align-items-center justify-content-between px-4 py-3 ${styles.header}`}
+      >
         <div className="d-flex align-items-center gap-3">
           <div className={styles.avatarWrap}>
             <img src={user.avatar} alt={user.name} className={styles.avatar} />
@@ -18,13 +20,14 @@ export default function MessageThread({ conversation, currentUser, children }) {
               {user.verified && <span className={styles.verified}>✓</span>}
             </div>
             <div className={styles.subline}>
-              {user.category || 'Creation & cinema'} · {user.online ? 'Online now' : 'Offline'}
+              {user.category || "Creation & cinema"} ·{" "}
+              {user.online ? "Online now" : "Offline"}
             </div>
           </div>
         </div>
 
         <div className="d-flex align-items-center gap-2">
-          {status === 'accepted' && (
+          {status === "accepted" && (
             <span className={styles.acceptedBadge}>Accepted</span>
           )}
           <button type="button" className={`btn btn-sm ${styles.deleteBtn}`}>
@@ -34,7 +37,9 @@ export default function MessageThread({ conversation, currentUser, children }) {
       </div>
 
       {/* Messages area */}
-      <div className={`flex-grow-1 px-4 py-3 d-flex flex-column gap-3 ${styles.body}`}>
+      <div
+        className={`flex-grow-1 px-4 py-3 d-flex flex-column gap-3 ${styles.body}`}
+      >
         <div className="text-center my-1">
           <span className={styles.datePill}>{dateLabel}</span>
         </div>
@@ -42,23 +47,32 @@ export default function MessageThread({ conversation, currentUser, children }) {
         {messages.map((msg) => {
           const isMe = msg.senderId === currentUser.id;
           const isInvite =
-            msg.type === 'live-invite' ||
-            msg.type === 'invite' ||
+            msg.type === "live-invite" ||
+            msg.type === "invite" ||
             Boolean(msg.invite) ||
             Boolean(msg.liveInvite);
 
           if (isInvite) {
             const invite = msg.invite || msg.liveInvite || msg;
             return (
-              <div key={msg.id} className={`p-3 rounded-3 ${styles.inviteCard}`}>
-                <span className={styles.inviteTag}>{invite.tag || 'LIVE INVITATION'}</span>
+              <div
+                key={msg.id}
+                className={`p-3 rounded-3 ${styles.inviteCard}`}
+              >
+                <span className={styles.inviteTag}>
+                  {invite.tag || "LIVE INVITATION"}
+                </span>
                 <h3 className="h6 fw-bold mt-2 mb-1">
-                  {invite.title || 'Cinema told by two.'}
+                  {invite.title || "Cinema told by two."}
                 </h3>
                 <p className={`small mb-3 ${styles.inviteMeta}`}>
-                  {invite.subtitle || 'Sadie Adler × Dutch van der Linde · Tonight at 21:00'}
+                  {invite.subtitle ||
+                    "Sadie Adler × Dutch van der Linde · Tonight at 21:00"}
                 </p>
-                <button type="button" className={`btn btn-sm fw-semibold px-3 ${styles.viewLiveBtn}`}>
+                <button
+                  type="button"
+                  className={`btn btn-sm fw-semibold px-3 ${styles.viewLiveBtn}`}
+                >
                   ((•)) View live
                 </button>
               </div>
@@ -68,13 +82,17 @@ export default function MessageThread({ conversation, currentUser, children }) {
           return (
             <div
               key={msg.id}
-              className={`d-flex flex-column ${isMe ? 'align-items-end' : 'align-items-start'}`}
+              className={`d-flex flex-column ${isMe ? "align-items-end" : "align-items-start"}`}
             >
-              <div className={`px-3 py-2 rounded-3 ${isMe ? styles.bubbleMe : styles.bubbleThem}`}>
+              <div
+                className={`px-3 py-2 rounded-3 ${isMe ? styles.bubbleMe : styles.bubbleThem}`}
+              >
                 <div>{msg.text}</div>
-                <div className={`mt-1 ${isMe ? styles.metaMe : styles.metaThem}`}>
+                <div
+                  className={`mt-1 ${isMe ? styles.metaMe : styles.metaThem}`}
+                >
                   {msg.time}
-                  {isMe && msg.read ? ' · Read ✓✓' : ''}
+                  {isMe && msg.read ? " · Read ✓✓" : ""}
                 </div>
               </div>
             </div>

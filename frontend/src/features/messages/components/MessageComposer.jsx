@@ -1,6 +1,6 @@
-import styles from './MessageComposer.module.css';
+import styles from "./MessageComposer.module.css";
 
-export default function MessageComposer({ recipientName = 'Sadie' }) {
+export default function MessageComposer({ recipientName = "Sadie" }) {
   return (
     <div className="d-flex flex-column gap-2">
       <div className="d-flex align-items-center gap-2">
@@ -17,7 +17,10 @@ export default function MessageComposer({ recipientName = 'Sadie' }) {
           placeholder={`Write a message to ${recipientName}...`}
           readOnly
         />
-        <button type="button" className={`btn btn-sm fw-semibold px-3 ${styles.sendBtn}`}>
+        <button
+          type="button"
+          className={`btn btn-sm fw-semibold px-3 ${styles.sendBtn}`}
+        >
           ➤ Send
         </button>
       </div>

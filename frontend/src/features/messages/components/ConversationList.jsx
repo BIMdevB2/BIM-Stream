@@ -1,4 +1,4 @@
-import styles from './ConversationList.module.css';
+import styles from "./ConversationList.module.css";
 
 export default function ConversationList({
   conversations,
@@ -7,9 +7,12 @@ export default function ConversationList({
   onAcceptRequest,
   onDeclineRequest,
 }) {
-  const acceptedList = conversations.filter((c) => c.status === 'accepted');
-  const pendingRequest = conversations.find((c) => c.status === 'pending');
-  const totalUnread = acceptedList.reduce((acc, c) => acc + (c.unreadCount || 0), 0);
+  const acceptedList = conversations.filter((c) => c.status === "accepted");
+  const pendingRequest = conversations.find((c) => c.status === "pending");
+  const totalUnread = acceptedList.reduce(
+    (acc, c) => acc + (c.unreadCount || 0),
+    0,
+  );
 
   return (
     <aside className={`d-flex flex-column h-100 p-3 gap-3 ${styles.sidebar}`}>
@@ -20,7 +23,9 @@ export default function ConversationList({
         </span>
       </div>
 
-      <div className={`d-flex align-items-center gap-2 px-3 py-2 rounded-3 ${styles.searchBox}`}>
+      <div
+        className={`d-flex align-items-center gap-2 px-3 py-2 rounded-3 ${styles.searchBox}`}
+      >
         <span className={styles.mutedText}>🔍</span>
         <input
           type="text"
@@ -37,7 +42,10 @@ export default function ConversationList({
         >
           All conversations
         </button>
-        <button type="button" className={`btn btn-sm fw-medium ${styles.tabBtn}`}>
+        <button
+          type="button"
+          className={`btn btn-sm fw-medium ${styles.tabBtn}`}
+        >
           Requests · {pendingRequest ? 1 : 0}
         </button>
       </div>
@@ -50,7 +58,7 @@ export default function ConversationList({
               key={conv.id}
               onClick={() => onSelectConversation?.(conv.id)}
               className={`d-flex align-items-center gap-3 p-2 rounded-3 ${styles.convItem} ${
-                isSelected ? styles.convItemActive : ''
+                isSelected ? styles.convItemActive : ""
               }`}
             >
               <div className="position-relative flex-shrink-0">
@@ -68,15 +76,23 @@ export default function ConversationList({
 
               <div className="flex-grow-1 overflow-hidden">
                 <div className="d-flex align-items-center justify-content-between">
-                  <span className="fw-semibold small text-truncate">{conv.user.name}</span>
-                  <span className={styles.timeText}>{conv.lastMessage.time}</span>
+                  <span className="fw-semibold small text-truncate">
+                    {conv.user.name}
+                  </span>
+                  <span className={styles.timeText}>
+                    {conv.lastMessage.time}
+                  </span>
                 </div>
                 <div className="d-flex align-items-center justify-content-between gap-2">
-                  <span className={`small text-truncate ${styles.secondaryText}`}>
+                  <span
+                    className={`small text-truncate ${styles.secondaryText}`}
+                  >
                     {conv.lastMessage.text}
                   </span>
                   {conv.unreadCount > 0 && (
-                    <span className={`fw-bold ${styles.unreadCount}`}>{conv.unreadCount}</span>
+                    <span className={`fw-bold ${styles.unreadCount}`}>
+                      {conv.unreadCount}
+                    </span>
                   )}
                 </div>
               </div>
@@ -86,44 +102,55 @@ export default function ConversationList({
       </div>
 
       {pendingRequest && (
-        <div className={`mt-auto p-3 rounded-3 d-flex flex-column gap-2 ${styles.requestCard}`}>
-          <div className="d-flex align-items-center justify-content-between">
-            <span className="small fw-semibold">Message request</span>
-            <span className={`badge ${styles.pendingBadge}`}>PENDING</span>
-          </div>
-
-          <div className="d-flex align-items-center gap-2">
-            <img
-              src={pendingRequest.user.avatar}
-              alt={pendingRequest.user.name}
-              className={`rounded-circle ${styles.requestAvatar}`}
-            />
-            <div>
-              <p className="mb-0 small fw-semibold">{pendingRequest.user.name}</p>
-              <p className={`mb-0 ${styles.timeText}`}>{pendingRequest.requestTimestamp}</p>
+        <div className={`mt-2 pt-3 ${styles.requestSection}`}>
+          <div
+            className={`p-3 rounded-3 d-flex flex-column gap-2 ${styles.requestCard}`}
+          >
+            <div className="d-flex align-items-center justify-content-between">
+              <span className="small fw-semibold">Message request</span>
+              <span className={`badge ${styles.pendingBadge}`}>PENDING</span>
             </div>
-          </div>
 
-          <p className="mb-0 small">{pendingRequest.lastMessage.text}</p>
-          <p className={`mb-1 ${styles.hintText}`}>
-            Accept to start chatting. This request is not an active conversation.
-          </p>
+            <div className="d-flex align-items-center gap-2">
+              <img
+                src={pendingRequest.user.avatar}
+                alt={pendingRequest.user.name}
+                className={`rounded-circle ${styles.requestAvatar}`}
+              />
+              <div>
+                <p className="mb-0 small fw-semibold">
+                  {pendingRequest.user.name}
+                </p>
+                <p className={`mb-0 ${styles.timeText}`}>
+                  {pendingRequest.requestTimestamp}
+                </p>
+              </div>
+            </div>
 
-          <div className="d-flex gap-2">
-            <button
-              type="button"
-              className={`btn btn-sm flex-fill fw-semibold ${styles.acceptBtn}`}
-              onClick={() => onAcceptRequest?.(pendingRequest.id)}
-            >
-              ✓ Accept
-            </button>
-            <button
-              type="button"
-              className={`btn btn-sm flex-fill fw-semibold ${styles.declineBtn}`}
-              onClick={() => onDeclineRequest?.(pendingRequest.id)}
-            >
-              ✕ Decline
-            </button>
+            <p className={`mb-0 small ${styles.secondaryText}`}>
+              {pendingRequest.lastMessage.text}
+            </p>
+            <p className={`mb-1 ${styles.hintText}`}>
+              Accept to start chatting. This request is not an active
+              conversation.
+            </p>
+
+            <div className="d-flex gap-2">
+              <button
+                type="button"
+                className={`btn btn-sm px-3 fw-semibold ${styles.acceptBtn}`}
+                onClick={() => onAcceptRequest?.(pendingRequest.id)}
+              >
+                ✓ Accept
+              </button>
+              <button
+                type="button"
+                className={`btn btn-sm px-3 fw-semibold ${styles.declineBtn}`}
+                onClick={() => onDeclineRequest?.(pendingRequest.id)}
+              >
+                ✕ Decline
+              </button>
+            </div>
           </div>
         </div>
       )}

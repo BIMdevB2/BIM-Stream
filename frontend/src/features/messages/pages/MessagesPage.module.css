@@ -11,10 +11,13 @@
   --msg-primary-border: rgba(255, 138, 36, 0.35);
   --msg-online: #22c55e;
 
-  padding: 1.5rem 2rem;
+  margin: 0;
+  padding: 1.25rem 1.5rem;
+  width: 100%;
   min-height: calc(100vh - 64px);
   background: var(--msg-bg);
   color: var(--msg-text);
+  box-sizing: border-box;
 }
 
 .mutedText {
@@ -34,12 +37,12 @@
 
 .shell {
   display: grid;
-  grid-template-columns: 380px 1fr;
+  grid-template-columns: 320px 1fr;
   border: 1px solid var(--msg-border);
   border-radius: 16px;
   overflow: hidden;
   background: var(--msg-surface);
-  min-height: 760px;
+  min-height: calc(100vh - 190px);
 }
 
 .sidebarCol {

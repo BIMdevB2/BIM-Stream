@@ -83,8 +83,12 @@
   color: var(--msg-primary);
 }
 
+.requestSection {
+  border-top: 1px solid var(--msg-border);
+}
+
 .requestCard {
-  background: var(--msg-surface-elevated);
+  background: var(--msg-bg);
   border: 1px solid var(--msg-primary-border);
 }
 
@@ -114,7 +118,7 @@
 }
 
 .declineBtn {
-  background: var(--msg-surface);
+  background: var(--msg-surface-elevated);
   color: var(--msg-text-secondary);
   border: 1px solid var(--msg-border);
 }
