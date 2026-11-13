@@ -1,0 +1,129 @@
+.card {
+  background-color: var(--msg-surface);
+  border: 1px solid var(--msg-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-4) var(--space-6);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: var(--space-4);
+}
+
+.title {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--msg-text);
+}
+
+.subtitle {
+  margin: 4px 0 0;
+  font-size: 12px;
+  color: var(--msg-muted);
+}
+
+.viewAll {
+  background: none;
+  border: none;
+  color: var(--msg-primary);
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  padding: 0;
+}
+
+.viewAll:hover {
+  text-decoration: underline;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: 6px;
+  border-radius: var(--radius-sm);
+  transition: background-color 0.15s ease;
+}
+
+.item:hover {
+  background-color: var(--msg-surface-elevated);
+}
+
+.thumbWrapper {
+  position: relative;
+  width: 118px;
+  height: 66px;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.thumbnail {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.progressTrack {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.progressFill {
+  height: 100%;
+  background-color: var(--msg-primary);
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  min-width: 0;
+}
+
+.videoTitle {
+  margin: 0;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--msg-text);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.meta {
+  margin: 0;
+  font-size: 11px;
+  color: var(--msg-muted);
+}
+
+.status {
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--msg-primary);
+}
+
+.footerNote {
+  margin: var(--space-6) 0 0;
+  padding-top: var(--space-3);
+  border-top: 1px solid var(--msg-border);
+  font-size: 11px;
+  color: var(--msg-muted);
+}
