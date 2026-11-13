@@ -1,6 +1,8 @@
+import { useState } from "react";
 import styles from "./MessageThread.module.css";
 
 export default function MessageThread({ conversation, currentUser, children }) {
+  const [showDeleteModal, setShowDeleteModal] = useState(false);
   const { user, status, dateLabel, messages } = conversation;
 
   return (
@@ -30,7 +32,11 @@ export default function MessageThread({ conversation, currentUser, children }) {
           {status === "accepted" && (
             <span className={styles.acceptedBadge}>Accepted</span>
           )}
-          <button type="button" className={`btn btn-sm ${styles.deleteBtn}`}>
+          <button
+            type="button"
+            onClick={() => setShowDeleteModal(true)}
+            className={`btn btn-sm ${styles.deleteBtn}`}
+          >
             🗑 Delete conversation
           </button>
         </div>
@@ -82,10 +88,14 @@ export default function MessageThread({ conversation, currentUser, children }) {
           return (
             <div
               key={msg.id}
-              className={`d-flex flex-column ${isMe ? "align-items-end" : "align-items-start"}`}
+              className={`d-flex flex-column ${
+                isMe ? "align-items-end" : "align-items-start"
+              }`}
             >
               <div
-                className={`px-3 py-2 rounded-3 ${isMe ? styles.bubbleMe : styles.bubbleThem}`}
+                className={`px-3 py-2 rounded-3 ${
+                  isMe ? styles.bubbleMe : styles.bubbleThem
+                }`}
               >
                 <div>{msg.text}</div>
                 <div
@@ -102,6 +112,46 @@ export default function MessageThread({ conversation, currentUser, children }) {
 
       {/* Composer slot */}
       <div className={`px-4 py-3 ${styles.footer}`}>{children}</div>
+
+      {/* Delete warning modal */}
+      {showDeleteModal && (
+        <div
+          className="position-fixed top-0 start-0 w-100 h-100 d-flex align-items-center justify-content-center"
+          style={{
+            backgroundColor: "rgba(0, 0, 0, 0.7)",
+            zIndex: 1050,
+          }}
+        >
+          <div
+            className="p-4 rounded-3"
+            style={{
+              backgroundColor: "var(--color-surface, #14181f)",
+              border: "1px solid var(--color-border, #282e38)",
+              color: "var(--color-text, #f5f6f8)",
+              maxWidth: "400px",
+              width: "90%",
+            }}
+          >
+            <h3 className="h6 fw-bold mb-2">Attention</h3>
+            <p className="small mb-4 text-secondary">
+              Attention, vous allez supprimer votre compte.
+            </p>
+            <div className="d-flex justify-content-end">
+              <button
+                type="button"
+                onClick={() => setShowDeleteModal(false)}
+                className="btn btn-sm fw-semibold px-4"
+                style={{
+                  backgroundColor: "var(--color-primary, #ff8a24)",
+                  color: "#0b0d10",
+                }}
+              >
+                OK
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
