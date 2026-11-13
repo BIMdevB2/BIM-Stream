@@ -1,6 +1,6 @@
 .card {
-  background-color: var(--color-surface);
-  border: 1px solid var(--color-border);
+  background-color: var(--msg-surface);
+  border: 1px solid var(--msg-border);
   border-radius: var(--radius-md);
   overflow: hidden;
   margin-bottom: var(--space-4);
@@ -8,131 +8,132 @@
 
 .banner {
   position: relative;
-  height: 140px;
-  width: 100%;
-  overflow: hidden;
-}
-
-.bannerImage {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
+  height: 150px;
+  background-size: cover;
+  background-position: center;
+  background-color: var(--msg-bg-inset);
 }
 
 .memberBadge {
   position: absolute;
-  top: var(--space-3);
-  right: var(--space-4);
-  background-color: rgba(20, 24, 31, 0.85);
-  border: 1px solid var(--color-border);
-  color: var(--color-muted);
-  font-size: 11px;
+  top: 14px;
+  right: 16px;
+  background-color: rgba(9, 10, 13, 0.78);
+  border: 1px solid var(--msg-border);
+  color: var(--msg-text-secondary);
+  font-size: 10px;
   font-weight: 600;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.06em;
   padding: 4px 10px;
   border-radius: var(--radius-sm);
 }
 
-.mainRow {
+.body {
   display: flex;
   justify-content: space-between;
-  align-items: flex-start;
+  align-items: center;
+  padding: 18px var(--space-6);
   gap: var(--space-4);
-  padding: var(--space-4) var(--space-6);
   flex-wrap: wrap;
 }
 
 .identity {
   display: flex;
   align-items: center;
-  gap: var(--space-4);
+  gap: 18px;
 }
 
 .avatar {
   width: 72px;
   height: 72px;
-  border-radius: 50%;
+  border-radius: var(--radius-full);
   object-fit: cover;
-  border: 2px solid var(--color-border);
-  flex-shrink: 0;
-}
-
-.userInfo {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
+  border: 2px solid var(--msg-border);
 }
 
 .name {
   margin: 0;
-  font-size: 20px;
+  font-size: 22px;
   font-weight: 700;
-  color: var(--color-text);
+  color: var(--msg-text);
 }
 
 .handle {
-  margin: 0;
+  margin: 3px 0 6px;
   font-size: 13px;
   font-weight: 500;
-  color: var(--color-primary);
+  color: var(--msg-primary);
 }
 
-.meta {
+.metaRow {
   display: flex;
+  align-items: center;
   gap: var(--space-4);
-  font-size: 12px;
-  color: var(--color-muted);
-  margin-top: 2px;
+  font-size: 11px;
+  color: var(--msg-muted);
 }
 
 .actions {
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  gap: var(--space-2);
+  gap: 8px;
 }
 
-.bottomActions {
+.actionRow {
   display: flex;
-  gap: var(--space-2);
+  align-items: center;
+  gap: 8px;
 }
 
-.btnSecondary,
-.btnDanger {
-  padding: 8px 14px;
-  font-size: 13px;
+.btnSecondary {
+  background-color: var(--msg-surface-elevated);
+  border: 1px solid var(--msg-border);
+  color: var(--msg-text);
+  font-size: 12px;
   font-weight: 500;
+  padding: 7px 14px;
   border-radius: var(--radius-sm);
   cursor: pointer;
-  border: 1px solid var(--color-border);
-  background-color: #1c212b;
-  color: var(--color-text);
-  transition: opacity 0.15s ease;
+  transition: border-color 0.15s ease;
 }
 
-.btnSecondary:hover,
-.btnDanger:hover {
-  opacity: 0.85;
+.btnSecondary:hover {
+  border-color: var(--msg-text-secondary);
 }
 
 .btnDanger {
-  background-color: rgba(220, 38, 38, 0.12);
-  border-color: rgba(220, 38, 38, 0.35);
+  background-color: rgba(239, 68, 68, 0.08);
+  border: 1px solid rgba(239, 68, 68, 0.35);
   color: #f87171;
+  font-size: 12px;
+  font-weight: 500;
+  padding: 7px 14px;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+}
+
+.btnDanger:hover {
+  background-color: rgba(239, 68, 68, 0.16);
 }
 
 .statsBar {
   display: flex;
   align-items: center;
-  flex-wrap: wrap;
   gap: var(--space-6);
-  padding: var(--space-3) var(--space-6);
-  border-top: 1px solid var(--color-border);
+  padding: 12px var(--space-6);
+  border-top: 1px solid var(--msg-border);
   font-size: 12px;
-  color: var(--color-muted);
+  color: var(--msg-text-secondary);
+  flex-wrap: wrap;
+}
+
+.statsBar strong {
+  color: var(--msg-text);
+  font-weight: 600;
 }
 
 .privateNote {
-  opacity: 0.8;
+  margin-left: var(--space-2);
+  color: var(--msg-muted);
 }
