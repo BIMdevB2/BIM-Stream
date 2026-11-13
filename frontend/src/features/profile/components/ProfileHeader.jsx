@@ -3,26 +3,22 @@ import styles from "./ProfileHeader.module.css";
 export function ProfileHeader({ user }) {
   return (
     <section className={styles.card}>
-      {/* Bannière supérieure + Badge date d'inscription */}
-      <div className={styles.banner}>
-        <img
-          src={user.bannerUrl}
-          alt="Profile cover"
-          className={styles.bannerImage}
-        />
+      <div
+        className={styles.banner}
+        style={{ backgroundImage: `url(${user.bannerUrl})` }}
+      >
         <span className={styles.memberBadge}>
           MEMBER SINCE {user.memberSince}
         </span>
       </div>
 
-      {/* Informations principales & Boutons d'action */}
-      <div className={styles.mainRow}>
+      <div className={styles.body}>
         <div className={styles.identity}>
           <img src={user.avatarUrl} alt={user.name} className={styles.avatar} />
-          <div className={styles.userInfo}>
+          <div>
             <h2 className={styles.name}>{user.name}</h2>
             <p className={styles.handle}>@{user.username}</p>
-            <div className={styles.meta}>
+            <div className={styles.metaRow}>
               <span>{user.email}</span>
               <span>User ID · {user.id}</span>
             </div>
@@ -33,7 +29,7 @@ export function ProfileHeader({ user }) {
           <button type="button" className={styles.btnSecondary}>
             Edit profile
           </button>
-          <div className={styles.bottomActions}>
+          <div className={styles.actionRow}>
             <button type="button" className={styles.btnSecondary}>
               Log out
             </button>
@@ -44,11 +40,16 @@ export function ProfileHeader({ user }) {
         </div>
       </div>
 
-      {/* Barre de statistiques en bas de carte */}
       <div className={styles.statsBar}>
-        <span>{user.stats.channelsFollowed} channels followed</span>
-        <span>{user.stats.videosWatched} videos watched</span>
-        <span>{user.stats.videosPosted} videos posted</span>
+        <span>
+          <strong>{user.stats.channelsFollowed}</strong> channels followed
+        </span>
+        <span>
+          <strong>{user.stats.videosWatched}</strong> videos watched
+        </span>
+        <span>
+          <strong>{user.stats.videosPosted}</strong> videos posted
+        </span>
         {user.isHistoryPrivate && (
           <span className={styles.privateNote}>
             Your viewing history is private.
