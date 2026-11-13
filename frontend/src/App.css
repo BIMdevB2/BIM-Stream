@@ -128,7 +128,7 @@
     position: absolute;
     top: 50%;
     left: calc(50% - 75px);
-    width: min(440px, 28vw);
+    width: min(380px, 26vw);
     max-width: none;
     flex: none;
     margin: 0;
@@ -137,6 +137,22 @@
 
   .header-actions {
     margin-left: auto;
+  }
+}
+
+@media (min-width: 992px) and (max-width: 1199px) {
+  .header-drawer-body {
+    gap: 12px;
+  }
+
+  .header-search {
+    flex: 1 1 180px;
+    width: auto;
+    max-width: 280px;
+  }
+
+  .header-actions {
+    gap: 12px !important;
   }
 }
 
