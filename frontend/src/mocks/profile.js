@@ -4,7 +4,7 @@ export const USER_PROFILE = {
   username: 'Arthur32_',
   email: 'Arthur@exemple.fr',
   avatarUrl: '/images/arthur.jpeg',
-  bannerUrl: '/images/BIM_Photo.jpg',
+  bannerUrl: '/images/video3.jpeg',
   memberSince: 'SEPTEMBER 2026',
   stats: {
     channelsFollowed: 24,
@@ -18,7 +18,7 @@ export const WATCH_HISTORY = [
   {
     id: 'hist-001',
     title: 'A night on the edge of the unknown.',
-    thumbnailUrl: '/images/BIM_Photo.jpg',
+    thumbnailUrl: '/images/montain.avif',
     creator: {
       username: 'Sadie Adler',
       avatarUrl: '/images/sadie.jpeg',
@@ -29,7 +29,7 @@ export const WATCH_HISTORY = [
   {
     id: 'hist-002',
     title: 'Behind the Scenes: How I Create Educational Content',
-    thumbnailUrl: '/images/BIM_Photo.jpg',
+    thumbnailUrl: '/images/IT.avif',
     creator: {
       username: 'John Marston',
       avatarUrl: '/images/jhon.webp',
@@ -40,7 +40,7 @@ export const WATCH_HISTORY = [
   {
     id: 'hist-003',
     title: "Night City hasn't given up all its secrets (PART 1)",
-    thumbnailUrl: '/images/BIM_Photo.jpg',
+    thumbnailUrl: '/images/video6.jpeg',
     creator: {
       username: 'Micah Bell',
       avatarUrl: '/images/Micah.webp',
@@ -51,7 +51,7 @@ export const WATCH_HISTORY = [
   {
     id: 'hist-004',
     title: "We're composing together until midnight",
-    thumbnailUrl: '/images/BIM_Photo.jpg',
+    thumbnailUrl: '/images/musicStudio.avif',
     creator: {
       username: 'Dutch van der Linde',
       avatarUrl: '/images/dutch.webp',
@@ -65,7 +65,7 @@ export const POSTED_VIDEOS = [
   {
     id: 'video-101',
     title: 'A study in light and shadows',
-    thumbnailUrl: '/images/BIM_Photo.jpg',
+    thumbnailUrl: '/images/video4.jpeg',
     creator: {
       id: 'USR-0032',
       username: 'Arthur Morgan',
@@ -81,7 +81,7 @@ export const POSTED_VIDEOS = [
   {
     id: 'video-102',
     title: 'Night walks: a city after dark',
-    thumbnailUrl: '/images/BIM_Photo.jpg',
+    thumbnailUrl: '/images/video3.jpeg',
     creator: {
       id: 'USR-0032',
       username: 'Arthur Morgan',
@@ -97,7 +97,7 @@ export const POSTED_VIDEOS = [
   {
     id: 'video-103',
     title: 'Sounds of a quiet evening',
-    thumbnailUrl: '/images/BIM_Photo.jpg',
+    thumbnailUrl: '/images/video1.jpeg',
     creator: {
       id: 'USR-0032',
       username: 'Arthur Morgan',
