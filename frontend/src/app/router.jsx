@@ -11,27 +11,26 @@ import MessagesPage from "../features/messages/pages/MessagesPage.jsx"; // uncom
 import VideoPage from "../features/videos/pages/VideoPage"; //uncomment when video page is present
 
 function AppRoutes() {
-  return (
-    <Routes>
-      {/* Routes to authentification files*/}
-      <Route element={<AuthLayout />}>
-        <Route path="/LoginPage" element={<LoginPage />} />
-        <Route path="/RegisterPage" element={<RegisterPage />} />
-      </Route>
+    return (
+        <Routes>
+            {/* Routes to authentification files*/}
+            <Route element={<AuthLayout />}>
+                <Route path='/LoginPage' element={<LoginPage />} />
+                <Route path='/RegisterPage' element={<RegisterPage />} />
+            </Route>
 
-      {/* Routes to the rest of the application */}
-      <Route element={<AppLayout />}>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/ModerationPage" element={<ModerationPage />} />
-        <Route path="/ProfilePage" element={<ProfilePage />} />
-        <Route path="/VideoPage" element={<VideoPage />} />
-        <Route path="/MessagesPage" element={<MessagesPage />} />
-        <Route path="/messages/:conversationId" element={<MessagesPage />} />
-      </Route>
-      {/* Route to not found pages */}
-      <Route path="/*" element={<PageNotFound />} />
-    </Routes>
-  );
+            {/* Routes to the rest of the application */}
+            <Route element={<AppLayout />}>
+                <Route path='/' element={<HomePage />} />
+                <Route path='/ModerationPage' element={<ModerationPage />} />
+                <Route path='/ProfilePage' element={<ProfilePage />} />
+                <Route path='/VideoPage' element={<VideoPage />} />
+                <Route path='MessagesPage' element={<MessagesPage />} />
+            </Route>
+            {/* Route to not found pages */}
+            <Route path='/*' element={<PageNotFound />} />
+        </Routes>
+    );
 }
 
 export default AppRoutes;

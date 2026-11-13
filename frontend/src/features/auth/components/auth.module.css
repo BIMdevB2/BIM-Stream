@@ -1,0 +1,151 @@
+.registerPage {
+    --bg: #0e0e10;
+    --field: #14161d;
+    --border: #2d3550;
+    --orange: #ff8f26;
+    background: var(--bg);
+    color: #fff;
+}
+
+/* ---------- Gauche ---------- */
+.registerLeft { min-height: 100vh; overflow: hidden; }
+
+.registerBg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.registerOverlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, rgba(0,0,0,.45) 0%, transparent 30%, rgba(0,0,0,.85) 100%);
+}
+
+.registerLeftContent { position: absolute; inset: 0; z-index: 2; }
+.registerTitle { font-size: 2.2rem; font-weight: 400; line-height: 1.1; }
+
+.counterPill {
+    border: 1px solid rgba(255,255,255,.3);
+    border-radius: 20px;
+    padding: 2px 12px;
+    font-size: .7rem;
+}
+
+.tagOrange { color: var(--orange); font-size: .65rem; letter-spacing: .08em; }
+
+.dot {
+    display: inline-block;
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--orange);
+    margin-right: 4px;
+}
+
+.bar { width: 8px; height: 3px; border-radius: 2px; background: rgba(255,255,255,.3); }
+.barActive { width: 36px; background: var(--orange); }
+
+.arrowBtn {
+    width: 36px; height: 36px;
+    border-radius: 50%;
+    border: 1px solid rgba(255,255,255,.3);
+    background: rgba(0,0,0,.5);
+    color: #fff;
+}
+.arrowOrange { background: var(--orange); border-color: var(--orange); color: #000; }
+
+/* ---------- Droite ---------- */
+.registerRight { background: var(--bg); min-height: 100vh; }
+.registerBox { max-width: 420px; min-width: 0; }
+
+.orangeLink { color: var(--orange); text-decoration: none; }
+
+.registerInput {
+    background: var(--field);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    color: #fff;
+    padding: .7rem .9rem;
+}
+.registerInput::placeholder { color: #6b7280; }
+.registerInput:focus {
+    background: var(--field);
+    color: #fff;
+    border-color: var(--orange);
+    box-shadow: 0 0 0 .2rem rgba(255,143,38,.2);
+}
+
+.eyeBtn {
+    position: absolute;
+    right: 12px; top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color: #9ca3af;
+}
+
+.registerCheck { background-color: var(--field); border-color: var(--border); }
+.registerCheck:checked { background-color: var(--orange); border-color: var(--orange); }
+
+.btnOrange {
+    background: var(--orange);
+    color: #fff;
+    font-weight: 700;
+    padding: .7rem;
+    border-radius: 8px;
+    box-shadow: 0 0 20px rgba(255,143,38,.35);
+}
+.btnOrange:hover { background: #ff9d45; color: #fff; }
+
+.divider { border-color: var(--border); opacity: 1; }
+
+.btnSocial {
+    background: var(--field);
+    border: 1px solid var(--border);
+    color: #fff;
+    border-radius: 10px;
+    padding: .6rem;
+}
+.btnSocial:hover { background: #1c1f2a; color: #fff; }
+
+/* ---------- Tailles de texte ---------- */
+.registerPage :global(.small) { font-size: .62rem; }
+
+/* Gauche */
+.registerTitle { font-size: 1.4rem; }
+.tagOrange { font-size: .55rem; }
+.counterPill { font-size: .6rem; }
+
+/* Droite */
+.registerBox h1 { font-size: 1.1rem; font-weight: 400; }
+.registerBox label { font-size: .72rem; }
+.registerInput { font-size: .72rem; padding: .5rem .75rem; }
+.btnOrange { font-size: .8rem; padding: .55rem; }
+.btnSocial { font-size: .68rem; padding: .45rem; }
+.secureBox { font-size: .62rem; }
+
+/* */
+
+.secureBox {
+    background: var(--field);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: .6rem .8rem;
+    font-size: .7rem;
+    color: #9ca3af;
+}
+
+.secureIcon {
+    flex-shrink: 0;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: rgba(255, 143, 38, .15);
+    color: var(--orange);
+    font-size: .8rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
