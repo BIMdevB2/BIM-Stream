@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router";
 import AuthSplitLayout from "../components/AuthSplitLayout";
 import FormField from "../components/FormField";
 import SocialButtons from "../components/SocialButtons";
@@ -6,6 +7,8 @@ import styles from "../components/auth.module.css";
 
 function RegisterPage() {
     const [user, setUser] = useState({ firstName: "", lastName: "", email: "", password: "" });
+
+    const navigate = useNavigate();
 
     function handleChange(e) {
         const { name, value } = e.target;
@@ -16,6 +19,7 @@ function RegisterPage() {
         e.preventDefault();
         console.log(user);
         setUser({ firstName: "", lastName: "", email: "", password: "" });
+        navigate("/LoginPage");
     }
 
     return (
