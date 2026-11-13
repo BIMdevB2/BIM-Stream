@@ -75,12 +75,13 @@ bim-stream-frontend/
 │   │   │   │   ├── LoginPage.jsx
 │   │   │   │   └── RegisterPage.jsx
 │   │   │   ├── components/
-│   │   │   │   ├── AuthSplitLayout.jsx
+│   │   │   │   ├── auth.module.css
 │   │   │   │   ├── FormField.jsx 
 │   │   │   │   └── SocialButtons.jsx
 │   │   │   ├── hooks/
 │   │   │   ├── api/
 │   │   │   │   └── auth.api.js
+│   │   │   ├── authPages.js
 │   │   │   └── AuthProvider.jsx
 │   │   ├── discovery/
 │   │   │   ├── pages/
