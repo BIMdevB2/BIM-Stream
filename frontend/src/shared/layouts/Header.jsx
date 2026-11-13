@@ -4,7 +4,7 @@ function Header() {
     return (
         <nav className="navbar md:navbar-expand px-3">
             <div className="container-fluid header-bar d-flex align-items-center gap-3 bg-1 fg-2 py-2 border rounded">
-                <img src="/BIM_Logo.png" alt="BIM Stream" className="header-logo" id="headerImg" />
+                <img src="../../../public/images/BIM_Logo.png" alt="BIM Stream" className="header-logo" id="headerImg" />
                 <NavLink className="navbar-brand header-brand" to="/">B.I.M Stream</NavLink>
 
                 <button className="btn-icon navbar-toggler" type="button" data-bs-toggle="drawer" data-bs-target="#navbarDrawer" aria-controls="navbarDrawer" aria-expanded="false" aria-label="Toggle navigation">
