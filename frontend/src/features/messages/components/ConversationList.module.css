@@ -1,0 +1,124 @@
+.sidebar {
+  background: var(--msg-surface);
+  color: var(--msg-text);
+}
+
+.unreadBadge {
+  background: var(--msg-primary-soft);
+  color: var(--msg-primary);
+  border: 1px solid var(--msg-primary-border);
+  font-size: 11px;
+}
+
+.searchBox {
+  background: var(--msg-bg);
+  border: 1px solid var(--msg-border);
+}
+
+.searchInput {
+  background: transparent;
+  border: none;
+  outline: none;
+  color: var(--msg-text);
+  font-size: 13px;
+  width: 100%;
+}
+
+.tabBtn {
+  background: var(--msg-surface-elevated);
+  color: var(--msg-text-secondary);
+  border: 1px solid var(--msg-border);
+  font-size: 12px;
+}
+
+.tabActive {
+  background: var(--msg-primary-soft);
+  color: var(--msg-primary);
+  border-color: var(--msg-primary-border);
+}
+
+.convItem {
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: background 0.15s ease;
+}
+
+.convItem:hover {
+  background: var(--msg-surface-elevated);
+}
+
+.convItemActive {
+  background: var(--msg-primary-soft);
+  border-color: var(--msg-primary-border);
+}
+
+.avatar {
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
+}
+
+.onlineDot {
+  width: 10px;
+  height: 10px;
+  background: var(--msg-online);
+  border: 2px solid var(--msg-surface);
+}
+
+.secondaryText {
+  color: var(--msg-text-secondary);
+}
+
+.mutedText {
+  color: var(--msg-muted);
+}
+
+.timeText {
+  font-size: 11px;
+  color: var(--msg-muted);
+}
+
+.unreadCount {
+  font-size: 11px;
+  color: var(--msg-primary);
+}
+
+.requestSection {
+  border-top: 1px solid var(--msg-border);
+}
+
+.requestCard {
+  background: var(--msg-bg);
+  border: 1px solid var(--msg-primary-border);
+}
+
+.pendingBadge {
+  background: var(--msg-primary-soft);
+  color: var(--msg-primary);
+  border: 1px solid var(--msg-primary-border);
+  font-size: 10px;
+}
+
+.requestAvatar {
+  width: 34px;
+  height: 34px;
+  object-fit: cover;
+}
+
+.hintText {
+  font-size: 11px;
+  color: var(--msg-muted);
+  line-height: 1.4;
+}
+
+.acceptBtn {
+  background: var(--msg-primary);
+  color: var(--msg-bg);
+  border: none;
+}
+
+.declineBtn {
+  background: var(--msg-surface-elevated);
+  color: var(--msg-text-secondary);
+  border: 1px solid var(--msg-border);
+}
