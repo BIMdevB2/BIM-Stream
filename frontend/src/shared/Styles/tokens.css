@@ -1,0 +1,28 @@
+:root {
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-full: 999px;
+
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-6: 24px;
+
+  /* Private Messages */
+  --msg-bg: #090a0d;
+  --msg-bg-inset: #0d0d0f;
+  --msg-surface: #171a21;
+  --msg-surface-elevated: #1e222b;
+  --msg-border: #2a303c;
+
+  --msg-text: #f7f5f2;
+  --msg-text-secondary: #a0a8b8;
+  --msg-muted: #727d90;
+
+  --msg-primary: #ff8c00;
+  --msg-primary-soft: rgba(255, 140, 0, 0.102);
+  --msg-primary-medium: rgba(255, 140, 0, 0.2);
+  --msg-primary-border: rgba(255, 140, 0, 0.251);
+  --msg-online: #91cdb0;
+}
