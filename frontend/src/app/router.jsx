@@ -9,6 +9,7 @@ import ModerationPage from "../features/admin/pages/ModerationPage.jsx"; // unco
 import { ProfilePage } from '../features/profile/pages/ProfilePage'; // uncomment when profile page is present
 import MessagesPage from "../features/messages/pages/MessagesPage.jsx"; // uncomment when message page is present
 import VideoPage from "../features/videos/pages/VideoPage"; //uncomment when video page is present
+import LivePage from "../features/live/pages/LivePage.jsx";
 
 function AppRoutes() {
     return (
@@ -25,6 +26,7 @@ function AppRoutes() {
                 <Route path='/ModerationPage' element={<ModerationPage />} />
                 <Route path='/ProfilePage' element={<ProfilePage />} />
                 <Route path='/VideoPage' element={<VideoPage />} />
+                <Route path='/LivePage' element={<LivePage />} />
                 <Route path='MessagesPage' element={<MessagesPage />} />
             </Route>
             {/* Route to not found pages */}
