@@ -17,7 +17,7 @@ export function WatchHistory({ items, isExpanded = false, onViewAll }) {
               Recently watched · Continue where you left off
             </p>
           </div>
-          {!isExpanded && items.length > 0 && (
+          {items.length > 0 && (
             <button
               type="button"
               className={styles.viewAll}
