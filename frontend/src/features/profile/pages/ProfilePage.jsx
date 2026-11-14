@@ -43,10 +43,6 @@ export function ProfilePage() {
     <div className={styles.page}>
       <header className={styles.pageHeader}>
         <p className={styles.breadcrumb}>Your world / My profile</p>
-        <h1 className={styles.pageTitle}>Your world, in one place.</h1>
-        <p className={styles.pageSubtitle}>
-          Pick up a story. Share a new one. Make this space yours.
-        </p>
       </header>
 
       <ProfileHeader
