@@ -89,7 +89,12 @@ export function ProfilePage() {
             onViewAll={() => setActiveTab("history")}
           />
         )}
-        {showVideos && <PostedVideos videos={POSTED_VIDEOS} />}
+        {showVideos && (
+          <PostedVideos
+            videos={POSTED_VIDEOS}
+            isExpanded={activeTab === "videos"}
+          />
+        )}
       </div>
     </div>
   );
