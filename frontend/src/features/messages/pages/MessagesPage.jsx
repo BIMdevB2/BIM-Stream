@@ -32,6 +32,7 @@ export default function MessagesPage() {
         conv.id === id ? { ...conv, status: "accepted" } : conv,
       ),
     );
+    setSelectedId(id);
   }
 
   function handleDeclineRequest(id) {

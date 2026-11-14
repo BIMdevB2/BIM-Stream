@@ -7,7 +7,6 @@ export default function MessageThread({ conversation, currentUser, children }) {
 
   return (
     <div className={`d-flex flex-column h-100 ${styles.thread}`}>
-      {/* Header */}
       <div
         className={`d-flex align-items-center justify-content-between px-4 py-3 ${styles.header}`}
       >
@@ -42,7 +41,6 @@ export default function MessageThread({ conversation, currentUser, children }) {
         </div>
       </div>
 
-      {/* Messages area */}
       <div
         className={`flex-grow-1 px-4 py-3 d-flex flex-column gap-3 ${styles.body}`}
       >
@@ -110,12 +108,11 @@ export default function MessageThread({ conversation, currentUser, children }) {
         })}
       </div>
 
-      {/* Composer slot */}
       <div className={`px-4 py-3 ${styles.footer}`}>{children}</div>
 
-      {/* Delete warning modal */}
       {showDeleteModal && (
         <div
+          onClick={() => setShowDeleteModal(false)}
           className="position-fixed top-0 start-0 w-100 h-100 d-flex align-items-center justify-content-center"
           style={{
             backgroundColor: "rgba(0, 0, 0, 0.7)",
@@ -123,6 +120,7 @@ export default function MessageThread({ conversation, currentUser, children }) {
           }}
         >
           <div
+            onClick={(e) => e.stopPropagation()}
             className="p-4 rounded-3"
             style={{
               backgroundColor: "var(--color-surface, #14181f)",
@@ -132,9 +130,9 @@ export default function MessageThread({ conversation, currentUser, children }) {
               width: "90%",
             }}
           >
-            <h3 className="h6 fw-bold mb-2">Attention</h3>
+            <h3 className="h6 fw-bold mb-2">Warning</h3>
             <p className="small mb-4 text-secondary">
-              Attention, vous allez supprimer votre compte.
+              Warning, you are about to delete your account.
             </p>
             <div className="d-flex justify-content-end">
               <button
