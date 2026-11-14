@@ -49,10 +49,6 @@ export default function MessagesPage() {
           <p className={`mb-1 small ${styles.mutedText}`}>
             Your world / Messages
           </p>
-          <h1 className="h3 mb-1 fw-bold">Keep the conversation going.</h1>
-          <p className={`mb-0 small ${styles.secondaryText}`}>
-            Your creators, your friends, your next collaboration.
-          </p>
         </div>
 
         <button
