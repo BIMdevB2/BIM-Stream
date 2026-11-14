@@ -11,11 +11,14 @@ export default function ConversationList({
   const [searchQuery, setSearchQuery] = useState("");
   const [activeTab, setActiveTab] = useState("all");
 
+  const normalizedQuery = searchQuery.trim().toLowerCase();
+
   const matchesSearch = (conv) => {
-    if (!searchQuery.trim()) return true;
+    if (!normalizedQuery) return true;
     return (
-      conv.user.name.toLowerCase().includes(searchQuery) ||
-      conv.lastMessage.text.toLowerCase().includes(searchQuery)
+      conv.user.name.toLowerCase().includes(normalizedQuery) ||
+      conv.user.handle.toLowerCase().includes(normalizedQuery) ||
+      conv.lastMessage.text.toLowerCase().includes(normalizedQuery)
     );
   };
 
@@ -54,6 +57,16 @@ export default function ConversationList({
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
         />
+        {searchQuery && (
+          <button
+            type="button"
+            onClick={() => setSearchQuery("")}
+            className="btn btn-sm p-0 border-0 text-secondary"
+            aria-label="Clear search"
+          >
+            ✕
+          </button>
+        )}
       </div>
 
       <div className="d-flex gap-2">
@@ -79,54 +92,60 @@ export default function ConversationList({
 
       {activeTab === "all" && (
         <div className="d-flex flex-column gap-2">
-          {acceptedList.map((conv) => {
-            const isSelected = conv.id === selectedId;
-            return (
-              <div
-                key={conv.id}
-                onClick={() => onSelectConversation?.(conv.id)}
-                className={`d-flex align-items-center gap-3 p-2 rounded-3 ${
-                  styles.convItem
-                } ${isSelected ? styles.convItemActive : ""}`}
-              >
-                <div className="position-relative flex-shrink-0">
-                  <img
-                    src={conv.user.avatar}
-                    alt={conv.user.name}
-                    className={`rounded-circle ${styles.avatar}`}
-                  />
-                  {conv.user.isOnline && (
-                    <span
-                      className={`position-absolute bottom-0 end-0 rounded-circle ${styles.onlineDot}`}
+          {acceptedList.length > 0 ? (
+            acceptedList.map((conv) => {
+              const isSelected = conv.id === selectedId;
+              return (
+                <div
+                  key={conv.id}
+                  onClick={() => onSelectConversation?.(conv.id)}
+                  className={`d-flex align-items-center gap-3 p-2 rounded-3 ${
+                    styles.convItem
+                  } ${isSelected ? styles.convItemActive : ""}`}
+                >
+                  <div className="position-relative flex-shrink-0">
+                    <img
+                      src={conv.user.avatar}
+                      alt={conv.user.name}
+                      className={`rounded-circle ${styles.avatar}`}
                     />
-                  )}
-                </div>
-
-                <div className="flex-grow-1 overflow-hidden">
-                  <div className="d-flex align-items-center justify-content-between">
-                    <span className="fw-semibold small text-truncate">
-                      {conv.user.name}
-                    </span>
-                    <span className={styles.timeText}>
-                      {conv.lastMessage.time}
-                    </span>
-                  </div>
-                  <div className="d-flex align-items-center justify-content-between gap-2">
-                    <span
-                      className={`small text-truncate ${styles.secondaryText}`}
-                    >
-                      {conv.lastMessage.text}
-                    </span>
-                    {conv.unreadCount > 0 && (
-                      <span className={`fw-bold ${styles.unreadCount}`}>
-                        {conv.unreadCount}
-                      </span>
+                    {conv.user.online && (
+                      <span
+                        className={`position-absolute bottom-0 end-0 rounded-circle ${styles.onlineDot}`}
+                      />
                     )}
                   </div>
+
+                  <div className="flex-grow-1 overflow-hidden">
+                    <div className="d-flex align-items-center justify-content-between">
+                      <span className="fw-semibold small text-truncate">
+                        {conv.user.name}
+                      </span>
+                      <span className={styles.timeText}>
+                        {conv.lastMessage.time}
+                      </span>
+                    </div>
+                    <div className="d-flex align-items-center justify-content-between gap-2">
+                      <span
+                        className={`small text-truncate ${styles.secondaryText}`}
+                      >
+                        {conv.lastMessage.text}
+                      </span>
+                      {conv.unreadCount > 0 && (
+                        <span className={`fw-bold ${styles.unreadCount}`}>
+                          {conv.unreadCount}
+                        </span>
+                      )}
+                    </div>
+                  </div>
                 </div>
-              </div>
-            );
-          })}
+              );
+            })
+          ) : (
+            <p className={`small mb-0 px-1 ${styles.secondaryText}`}>
+              No conversations found.
+            </p>
+          )}
         </div>
       )}
 
@@ -185,6 +204,12 @@ export default function ConversationList({
             </div>
           ))}
         </div>
+      )}
+
+      {activeTab === "requests" && pendingList.length === 0 && (
+        <p className={`small mb-0 px-1 ${styles.secondaryText}`}>
+          No pending message requests.
+        </p>
       )}
 
       <p className={`mb-0 mt-auto ${styles.hintText}`}>
