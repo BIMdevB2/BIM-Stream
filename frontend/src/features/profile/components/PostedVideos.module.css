@@ -53,9 +53,20 @@
   margin-bottom: var(--space-3);
 }
 
+.expandedGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: var(--space-4);
+}
+
 .featuredCard {
   display: flex;
   flex-direction: column;
+  min-width: 0;
+  background-color: var(--msg-surface-elevated);
+  border: 1px solid var(--msg-border);
+  border-radius: var(--radius-sm);
+  padding: var(--space-3);
 }
 
 .featuredThumbWrapper {
@@ -112,7 +123,9 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-top: var(--space-3);
+  gap: var(--space-2);
+  margin-top: auto;
+  padding-top: var(--space-3);
 }
 
 .statusBadge {
