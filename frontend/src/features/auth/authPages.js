@@ -1,0 +1,26 @@
+export const AUTH_PAGES = {
+    "/registerpage": {
+        image: "/images/bg_RegisterPage.jpg",
+        tag: "B.I.M ORIGINAL",
+        title: "Your next world is waiting.",
+        text: "Continue every story across devices, with personal picks waiting whenever you return.",
+        topText: "Already have an account ?",
+        topLink: "/LoginPage",
+        topLinkLabel: "Sign in",
+        formTag: "START WATCHING",
+        formTitle: "Create an account",
+        formText: "Join B.I.M Stream and make every night feel like opening night.",
+    },
+    "/loginpage": {
+        image: "/images/bg_LoginPage.jpg",
+        tag: "FEATURED THIS WEEK",
+        title: "Stories beyond the horizon.",
+        text: "Enter worlds shaped by fearless filmmakers, curated in cinematic detail and ready whenever you are.",
+        topText: "New to B.I.M Stream ?",
+        topLink: "/RegisterPage",
+        topLinkLabel: "Sign up",
+        formTag: "CONTINUE WATCHING",
+        formTitle: "Welcome back",
+        formText: "Log in to continue watching, pick up where you left off, and see what's new.",
+    },
+};

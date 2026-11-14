@@ -36,10 +36,8 @@ function Header() {
                                     </span> User <i className="fa-solid fa-angle-down"></i>
                                 </button>
                                 <div className="menu">
-                                    <NavLink className="menu-item" to="/LoginPage">Login</NavLink>
-                                    <NavLink className="menu-item" to="/RegisterPage">Register</NavLink>
                                     <hr className="menu-divider" />
-                                    <NavLink className="menu-item" href="#">Log Out</NavLink>
+                                    <NavLink className="menu-item" to="/LoginPage">Log Out</NavLink>
                                 </div>
                             </li>
                             <li className="nav-item">
