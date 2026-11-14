@@ -1,3 +1,82 @@
+export const categories = [
+  "For you",
+  "Subscriptions",
+  "Video games",
+  "Cinema & creation",
+  "Education",
+  "Music",
+  "Discussion",
+];
+
+export const liveStreams = [
+  {
+    id: "night-city",
+    title: "Night City hasn't given up all its secrets (PART 2 - Final Part)",
+    creator: "Micah Bell",
+    category: "Video games",
+    subscribed: true,
+    viewers: "1.8K",
+    image: "../../../public/images/street.avif",
+    avatar: "../../../public/images/Micah.webp",
+  },
+  {
+    id: "midnight-composition",
+    title: "We're composing together until midnight",
+    creator: "Dutch van der Linde",
+    category: "Music",
+    subscribed: false,
+    viewers: "856",
+    image: "../../../public/images/musicStudio.avif",
+    avatar: "../../../public/images/dutch.webp",
+  },
+  {
+    id: "behind-the-scenes",
+    title: "Behind the Scenes: How I Create Educational Content",
+    creator: "John Marston",
+    category: "Cinema & creation",
+    subscribed: true,
+    viewers: "643",
+    image: "../../../public/images/IT.avif",
+    avatar: "../../../public/images/jhon.webp",
+  },
+];
+
+export const directMessages = [
+  {
+    name: "Sadie Adler",
+    message: "Want to join the Beyond stream tonight?",
+    time: "2 min",
+    avatar: "../../../public/images/sadie.jpeg",
+  },
+  {
+    name: "Micah Bell",
+    message: "Ready for a Night City session?",
+    time: "18 min",
+    avatar: "../../../public/images/Micah.webp",
+  },
+  {
+    name: "Javier Escuella",
+    message: "Catch you later, going offline for tonight!",
+    time: "1 hr",
+    avatar: "../../../public/images/javier.jpg",
+  },
+];
+
+export const liveInvitations = [
+  {
+    name: "Sadie Adler",
+    details: "Beyond · Duo stream with Dutch van der Linde",
+    time: "21:00",
+    avatar: "../../../public/images/sadie.jpeg",
+  },
+  {
+    name: "John Marston",
+    details: "Education & Talks · Live Q&A",
+    time: "22:30",
+    avatar: "../../../public/images/jhon.webp",
+  },
+];
+
 export const CURRENT_USER = {
   id: "arthur",
   name: "Arthur Morgan",
@@ -88,6 +167,19 @@ export const MOCK_CONVERSATIONS = [
     messages: [
       {
         id: "m-micah-1",
+        senderId: "arthur",
+        text: "Hey Micah, still streaming tonight?",
+        time: "20:20",
+        read: true,
+      },
+      {
+        id: "m-micah-2",
+        senderId: "micah",
+        text: "Yeah man, just setting up the lobby.",
+        time: "20:23",
+      },
+      {
+        id: "m-micah-3",
         senderId: "micah",
         text: "Ready for a Night City session?",
         time: "20:24",
@@ -109,15 +201,35 @@ export const MOCK_CONVERSATIONS = [
       avatar: "/images/dutch.webp",
     },
     lastMessage: {
-      text: "I'll bring the soundtrack.",
-      time: "19:36",
+      text: "You: Sounds awesome, see you at 21:00!",
+      time: "19:38",
     },
     messages: [
       {
         id: "m-dutch-1",
         senderId: "dutch",
+        text: "Arthur, are you joining Sadie's stream tonight?",
+        time: "19:32",
+      },
+      {
+        id: "m-dutch-2",
+        senderId: "arthur",
+        text: "Count me in, I wouldn't miss it.",
+        time: "19:34",
+        read: true,
+      },
+      {
+        id: "m-dutch-3",
+        senderId: "dutch",
         text: "I'll bring the soundtrack.",
         time: "19:36",
+      },
+      {
+        id: "m-dutch-4",
+        senderId: "arthur",
+        text: "Sounds awesome, see you at 21:00!",
+        time: "19:38",
+        read: true,
       },
     ],
   },
@@ -136,15 +248,35 @@ export const MOCK_CONVERSATIONS = [
       avatar: "/images/jhon.webp",
     },
     lastMessage: {
-      text: "Thanks for watching the tutorial.",
+      text: "You: Anytime man, keep it up!",
       time: "Yesterday",
     },
     messages: [
       {
         id: "m-john-1",
         senderId: "john",
+        text: "Hey Arthur, did you check out my new editing guide?",
+        time: "Yesterday",
+      },
+      {
+        id: "m-john-2",
+        senderId: "arthur",
+        text: "Yeah, super clear and helpful as always!",
+        time: "Yesterday",
+        read: true,
+      },
+      {
+        id: "m-john-3",
+        senderId: "john",
         text: "Thanks for watching the tutorial.",
         time: "Yesterday",
+      },
+      {
+        id: "m-john-4",
+        senderId: "arthur",
+        text: "Anytime man, keep it up!",
+        time: "Yesterday",
+        read: true,
       },
     ],
   },

@@ -3,6 +3,12 @@ import styles from "./MessageThread.module.css";
 export default function MessageThread({ conversation, currentUser, children }) {
   const { user, status, dateLabel, messages } = conversation;
 
+  function handleDeleteClick() {
+    window.alert(
+      `Warning: You are about to delete your conversation with ${user.name}.`,
+    );
+  }
+
   return (
     <div className={`d-flex flex-column h-100 ${styles.thread}`}>
       {/* Header */}
@@ -30,7 +36,11 @@ export default function MessageThread({ conversation, currentUser, children }) {
           {status === "accepted" && (
             <span className={styles.acceptedBadge}>Accepted</span>
           )}
-          <button type="button" className={`btn btn-sm ${styles.deleteBtn}`}>
+          <button
+            type="button"
+            onClick={handleDeleteClick}
+            className={`btn btn-sm ${styles.deleteBtn}`}
+          >
             🗑 Delete conversation
           </button>
         </div>
@@ -82,10 +92,14 @@ export default function MessageThread({ conversation, currentUser, children }) {
           return (
             <div
               key={msg.id}
-              className={`d-flex flex-column ${isMe ? "align-items-end" : "align-items-start"}`}
+              className={`d-flex flex-column ${
+                isMe ? "align-items-end" : "align-items-start"
+              }`}
             >
               <div
-                className={`px-3 py-2 rounded-3 ${isMe ? styles.bubbleMe : styles.bubbleThem}`}
+                className={`px-3 py-2 rounded-3 ${
+                  isMe ? styles.bubbleMe : styles.bubbleThem
+                }`}
               >
                 <div>{msg.text}</div>
                 <div
