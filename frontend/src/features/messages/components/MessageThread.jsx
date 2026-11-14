@@ -1,12 +1,17 @@
-import { useState } from "react";
 import styles from "./MessageThread.module.css";
 
 export default function MessageThread({ conversation, currentUser, children }) {
-  const [showDeleteModal, setShowDeleteModal] = useState(false);
   const { user, status, dateLabel, messages } = conversation;
+
+  function handleDeleteClick() {
+    window.alert(
+      `Warning: You are about to delete your conversation with ${user.name}.`,
+    );
+  }
 
   return (
     <div className={`d-flex flex-column h-100 ${styles.thread}`}>
+      {/* Header */}
       <div
         className={`d-flex align-items-center justify-content-between px-4 py-3 ${styles.header}`}
       >
@@ -33,7 +38,7 @@ export default function MessageThread({ conversation, currentUser, children }) {
           )}
           <button
             type="button"
-            onClick={() => setShowDeleteModal(true)}
+            onClick={handleDeleteClick}
             className={`btn btn-sm ${styles.deleteBtn}`}
           >
             🗑 Delete conversation
@@ -41,6 +46,7 @@ export default function MessageThread({ conversation, currentUser, children }) {
         </div>
       </div>
 
+      {/* Messages area */}
       <div
         className={`flex-grow-1 px-4 py-3 d-flex flex-column gap-3 ${styles.body}`}
       >
@@ -108,48 +114,8 @@ export default function MessageThread({ conversation, currentUser, children }) {
         })}
       </div>
 
+      {/* Composer slot */}
       <div className={`px-4 py-3 ${styles.footer}`}>{children}</div>
-
-      {showDeleteModal && (
-        <div
-          onClick={() => setShowDeleteModal(false)}
-          className="position-fixed top-0 start-0 w-100 h-100 d-flex align-items-center justify-content-center"
-          style={{
-            backgroundColor: "rgba(0, 0, 0, 0.7)",
-            zIndex: 1050,
-          }}
-        >
-          <div
-            onClick={(e) => e.stopPropagation()}
-            className="p-4 rounded-3"
-            style={{
-              backgroundColor: "var(--color-surface, #14181f)",
-              border: "1px solid var(--color-border, #282e38)",
-              color: "var(--color-text, #f5f6f8)",
-              maxWidth: "400px",
-              width: "90%",
-            }}
-          >
-            <h3 className="h6 fw-bold mb-2">Warning</h3>
-            <p className="small mb-4 text-secondary">
-              Warning, you are about to delete your account.
-            </p>
-            <div className="d-flex justify-content-end">
-              <button
-                type="button"
-                onClick={() => setShowDeleteModal(false)}
-                className="btn btn-sm fw-semibold px-4"
-                style={{
-                  backgroundColor: "var(--color-primary, #ff8a24)",
-                  color: "#0b0d10",
-                }}
-              >
-                OK
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
     </div>
   );
 }
