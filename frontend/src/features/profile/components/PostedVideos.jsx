@@ -5,7 +5,7 @@ export function PostedVideos({ videos }) {
   const regularVideos = videos.filter((video) => !video.featured);
 
   const handleDeleteVideo = () => {
-    window.confirm("Attention, vous allez supprimer une vidéo.");
+    window.alert("Warning: you are about to delete a video.");
   };
 
   return (
