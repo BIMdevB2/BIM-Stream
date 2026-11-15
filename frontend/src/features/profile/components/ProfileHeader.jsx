@@ -1,16 +1,6 @@
 import styles from "./ProfileHeader.module.css";
 
-export function ProfileHeader({ user, onLogout }) {
-  const handleLogout = () => {
-    if (onLogout) {
-      onLogout();
-    }
-  };
-
-  const handleDeleteAccount = () => {
-    window.alert("Warning: you are about to delete your account.");
-  };
-
+export function ProfileHeader({ user }) {
   return (
     <section className={styles.card}>
       <div
@@ -40,18 +30,10 @@ export function ProfileHeader({ user, onLogout }) {
             Edit profile
           </button>
           <div className={styles.actionRow}>
-            <button
-              type="button"
-              className={styles.btnSecondary}
-              onClick={handleLogout}
-            >
+            <button type="button" className={styles.btnSecondary}>
               Log out
             </button>
-            <button
-              type="button"
-              className={styles.btnDanger}
-              onClick={handleDeleteAccount}
-            >
+            <button type="button" className={styles.btnDanger}>
               Delete account
             </button>
           </div>

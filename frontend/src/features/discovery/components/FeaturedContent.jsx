@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router";
 
-const featuredImage = "images/montain.avif";
+const featuredImage = "../../../public/images/montain.avif";
 
 function FeaturedContent() {
     const [following, setFollowing] = useState(false);
@@ -29,7 +29,7 @@ function FeaturedContent() {
                 </p>
                 <div className="discovery-featured-creator">
                     <img
-                        src="images/sadie.jpeg"
+                        src="../../../public/images/sadie.jpeg"
                         alt=""
                     />
                     <span>Sadie Adler</span>
