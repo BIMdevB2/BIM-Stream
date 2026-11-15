@@ -2,11 +2,12 @@ import { NavLink } from "react-router";
 import { USER_PROFILE } from "../../mocks/profile.js";
 
 function Header() {
-    return (
-        <nav className="navbar md:navbar-expand px-3">
-            <div className="container-fluid header-bar d-flex align-items-center gap-3 bg-1 fg-2 py-2 border rounded">
-                <img src="images/BIM_Logo.png" alt="BIM Stream" className="header-logo" id="headerImg" />
-                <NavLink className="navbar-brand header-brand" to="/">B.I.M Stream</NavLink>
+  return (
+    <nav className="AppHeader" aria-label="Main navigation">
+      <NavLink className="header-brand" to="/" aria-label="B.I.M Stream home">
+        <img src="/images/BIM_Logo.png" alt="" />
+        <span>B.I.M Stream</span>
+      </NavLink>
 
       <div className="header-search" role="search">
         <i className="fa-solid fa-magnifying-glass" aria-hidden="true" />
