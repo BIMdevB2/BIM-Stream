@@ -5,7 +5,7 @@ import Sidebar from "../../shared/layouts/Sidebar";
 function AppLayout() {
   return (
     <>
-      <header className="AppHeaderShell">
+      <header>
         <Header />
       </header>
       <div className="AppLayout">

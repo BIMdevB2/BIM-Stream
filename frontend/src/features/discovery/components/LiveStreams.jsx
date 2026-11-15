@@ -5,7 +5,7 @@ function LiveStreams({ streams }) {
         <section className="discovery-section" aria-labelledby="live-now-title">
             <div className="discovery-section-heading">
                 <h2 id="live-now-title">Live now</h2>
-                <Link to="/LivePage">
+                <Link to="/VideoPage">
                     All live streams <span aria-hidden="true">→</span>
                 </Link>
             </div>
@@ -16,7 +16,7 @@ function LiveStreams({ streams }) {
                         <article className="discovery-stream-card" key={stream.id}>
                             <Link
                                 className="discovery-stream-thumbnail"
-                                to="/LivePage"
+                                to="/VideoPage"
                                 aria-label={`Watch ${stream.title}`}
                                 style={{ backgroundImage: `url("${stream.image}")` }}
                             >
@@ -31,7 +31,7 @@ function LiveStreams({ streams }) {
                             <div className="discovery-stream-details">
                                 <img className="discovery-avatar" src={stream.avatar} alt="" />
                                 <div className="discovery-stream-copy">
-                                    <Link className="discovery-stream-title" to="/LivePage">
+                                    <Link className="discovery-stream-title" to="/VideoPage">
                                         {stream.title}
                                     </Link>
                                     <p>{stream.creator}</p>
