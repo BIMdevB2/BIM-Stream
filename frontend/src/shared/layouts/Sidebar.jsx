@@ -5,6 +5,7 @@ const navigationItems = [
     { to: '/VideoPage', label: 'Video', icon: 'fa-video' },
     { to: '/MessagesPage', label: 'Messages', icon: 'fa-message' },
     { to: '/ProfilePage', label: 'My profile', icon: 'fa-user' },
+    { to: '/ModerationPage', label: 'Admin panel', icon: 'fa-screwdriver-wrench' },
 ];
 
 function Sidebar() {
