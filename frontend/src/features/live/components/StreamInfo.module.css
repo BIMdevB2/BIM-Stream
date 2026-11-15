@@ -1,0 +1,210 @@
+.info {
+  min-width: 0;
+  color: #f4f5f7;
+}
+
+.streamHeading {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.category {
+  display: inline-block;
+  margin-bottom: 5px;
+  padding: 3px 6px;
+  border-radius: 4px;
+  background: #291d12;
+  color: #ff9a3e;
+  font-size: 10px;
+  font-weight: 750;
+  text-transform: uppercase;
+}
+
+.streamHeading h2 {
+  margin: 0;
+  font-size: clamp(18px, 1.6vw, 23px);
+  font-weight: 500;
+  letter-spacing: -0.02em;
+}
+
+.startedAt {
+  flex: 0 0 auto;
+  padding-top: 6px;
+  color: #a2acba;
+  font-size: 11px;
+}
+
+.description {
+  max-width: 680px;
+  margin: 6px 0;
+  color: #bbc2cc;
+  font-size: 12px;
+  line-height: 1.45;
+}
+
+.stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding: 0 0 8px;
+  color: #aab3c0;
+  font-size: 11px;
+}
+
+.stats span {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.creator {
+  display: flex;
+  min-width: 0;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 0;
+  border-top: 1px solid #252b34;
+}
+
+.creator > img {
+  flex: 0 0 26px;
+  width: 26px;
+  height: 26px;
+  border: 1px solid #414854;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.creatorCopy {
+  display: flex;
+  flex: 1;
+  min-width: 0;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.creatorCopy strong {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  color: #f1f3f6;
+  font-size: 12px;
+}
+
+.creatorCopy strong i {
+  color: #d7dce5;
+  font-size: 8px;
+}
+
+.creatorCopy > span {
+  color: #aab3c0;
+  font-size: 10px;
+}
+
+.followButton,
+.secondaryButton,
+.leaveButton {
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  min-height: 28px;
+  padding: 0 9px;
+  border: 1px solid #303744;
+  border-radius: 6px;
+  background: #1d222b;
+  color: #f0f2f5;
+  font: inherit;
+  font-size: 11px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.followButton:hover,
+.followButton.isFollowing {
+  border-color: #ff8b2380;
+  color: #ff9a3e;
+}
+
+.joinPanel {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px;
+  border: 1px solid #292f39;
+  border-radius: 8px;
+  background: #171a20;
+}
+
+.joinCopy {
+  display: flex;
+  flex: 1;
+  min-width: 0;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.joinCopy strong {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #f1f3f6;
+  font-size: 11px;
+}
+
+.joinCopy strong i {
+  color: #ff9a3e;
+}
+
+.joinCopy > span {
+  overflow: hidden;
+  color: #aab3c0;
+  font-size: 10px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.secondaryButton:hover,
+.leaveButton:hover {
+  border-color: #596273;
+  background: #222731;
+}
+
+.secondaryButton:disabled {
+  opacity: 0.65;
+  cursor: default;
+}
+
+.leaveButton {
+  border-color: #303744;
+  background: transparent;
+}
+
+@media (max-width: 920px) {
+  .streamHeading {
+    display: block;
+  }
+
+  .startedAt {
+    display: none;
+  }
+}
+
+@media (max-width: 760px) {
+  .joinCopy > span {
+    white-space: normal;
+  }
+}
+
+@media (max-width: 480px) {
+  .joinPanel {
+    flex-wrap: wrap;
+  }
+
+  .joinCopy {
+    flex-basis: 100%;
+  }
+}

@@ -1,0 +1,280 @@
+.page {
+  --live-bg: #0c0d10;
+  --live-surface: #171a20;
+  --live-surface-raised: #1b1f27;
+  --live-border: #292f39;
+  --live-text: #f4f5f7;
+  --live-secondary: #a4acb9;
+  --live-muted: #727d8d;
+  --live-accent: #ff8b23;
+
+  box-sizing: border-box;
+  min-height: calc(100vh - 64px);
+  padding: 24px clamp(20px, 3vw, 40px);
+  background: var(--live-bg);
+  color: var(--live-text);
+}
+
+.page h1,
+.page h2,
+.page p {
+  margin-top: 0;
+}
+
+.heading {
+  margin-bottom: 20px;
+}
+
+.breadcrumb {
+  margin-bottom: 3px;
+  color: #aab4c3;
+  font-size: 13px;
+}
+
+.heading h1 {
+  margin-bottom: 2px;
+  font-size: clamp(30px, 2.5vw, 38px);
+  font-weight: 600;
+  letter-spacing: -0.025em;
+}
+
+.subtitle {
+  margin-bottom: 0;
+  color: #bbc2cc;
+  font-size: 15px;
+}
+
+.content {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(270px, 31%);
+  gap: 12px;
+  align-items: stretch;
+}
+
+.mainColumn {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.player {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  min-height: 220px;
+  overflow: hidden;
+  border: 1px solid #222832;
+  border-radius: 9px;
+  background: #10151b;
+}
+
+.player::after {
+  position: absolute;
+  inset: 45% 0 0;
+  background: linear-gradient(transparent, rgb(0 0 0 / 78%));
+  content: "";
+  pointer-events: none;
+}
+
+.playerImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 56%;
+}
+
+.playerTop,
+.playerBottom {
+  position: absolute;
+  z-index: 1;
+  right: 10px;
+  left: 10px;
+  display: flex;
+  align-items: center;
+  font-size: 12px;
+}
+
+.playerTop {
+  top: 10px;
+  gap: 8px;
+  color: #e6e9ee;
+}
+
+.liveBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 4px 7px;
+  border-radius: 4px;
+  background: var(--live-accent);
+  color: #111;
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.liveBadge span {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #111;
+}
+
+.playerBottom {
+  bottom: 0;
+  display: block;
+  color: #f4f5f7;
+}
+
+.playerProgress {
+  display: block;
+  height: 2px;
+  background: linear-gradient(90deg, var(--live-accent) 70%, #ffffff66 70%);
+}
+
+.playerControls {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 27px;
+  padding: 0 1px;
+  font-size: 11px;
+}
+
+.playerControls>span {
+  white-space: nowrap;
+}
+
+.streamDuration {
+  color: #f0f1f3;
+}
+
+.playerSpacer {
+  flex: 1;
+}
+
+.upcoming {
+  grid-column: 1 / -1;
+  display: flex;
+  min-width: 0;
+  align-items: center;
+  gap: 11px;
+  padding: 9px;
+  border: 1px solid var(--live-border);
+  border-radius: 9px;
+  background: var(--live-surface);
+}
+
+.eventTime {
+  display: flex;
+  flex: 0 0 33px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 38px;
+  border-radius: 6px;
+  background: #241b13;
+  color: var(--live-accent);
+}
+
+.eventTime span {
+  font-size: 10px;
+}
+
+.eventTime strong {
+  font-size: 15px;
+  line-height: 1.2;
+}
+
+.eventCopy {
+  flex: 1;
+  min-width: 0;
+}
+
+.eventCopy h2 {
+  margin-bottom: 2px;
+  font-size: 14px;
+  font-weight: 650;
+}
+
+.eventCopy p {
+  overflow: hidden;
+  margin-bottom: 0;
+  color: var(--live-secondary);
+  font-size: 11px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.reminderButton {
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: center;
+  gap: 6px;
+  min-height: 27px;
+  padding: 0 9px;
+  border: 1px solid var(--live-border);
+  border-radius: 6px;
+  background: #14171d;
+  color: var(--live-text);
+  font: inherit;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.reminderButton:hover,
+.reminderButton[aria-pressed="true"] {
+  border-color: #ff8b2380;
+  color: var(--live-accent);
+}
+
+@media (min-width: 1100px) {
+  .content {
+    grid-template-rows: auto auto;
+  }
+}
+
+@media (max-width: 760px) {
+  .content {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .player {
+    min-height: 190px;
+  }
+
+  .upcoming {
+    grid-column: 1;
+  }
+}
+
+@media (max-width: 480px) {
+  .page {
+    padding: 16px 12px;
+  }
+
+  .player {
+    min-height: 150px;
+  }
+
+  .playerControls {
+    gap: 9px;
+    font-size: 10px;
+  }
+
+  .streamDuration {
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .upcoming {
+    flex-wrap: wrap;
+  }
+
+  .eventCopy {
+    flex-basis: calc(100% - 55px);
+  }
+
+  .reminderButton {
+    margin-left: 44px;
+  }
+}
