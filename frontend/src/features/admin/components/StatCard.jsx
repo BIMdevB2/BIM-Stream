@@ -1,11 +1,14 @@
-function StatCard({ label, value, hint }) {
+import styles from "../pages/ModerationPage.module.css";
+
+function StatCard({ label, value, hint, icon }) {
     return (
-        <div className="card h-100">
-            <div className="card-body">
-                <p className="mb-1">{label}</p>
-                <h2>{value}</h2>
-                <small>{hint}</small>
+        <div className={`${styles["mod-card"]} h-100`}>
+            <div className="d-flex justify-content-between">
+                <span className={styles["mod-muted"]}>{label}</span>
+                <i className={`fa-solid ${icon} ${styles["mod-accent"]}`}></i>
             </div>
+            <div className={styles["mod-stat-value"]}>{value}</div>
+            <small className={styles["mod-muted"]}>{hint}</small>
         </div>
     );
 }

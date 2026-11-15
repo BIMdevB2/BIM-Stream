@@ -1,4 +1,5 @@
 import { formatDate, formatTime, isActiveBan } from "../../../mocks/moderation.js";
+import styles from "../pages/ModerationPage.module.css";
 
 const STATUS_LABELS = {
     active: "Active",
@@ -13,38 +14,38 @@ function BannedUserRow({ ban, onUnban }) {
     return (
         <tr>
             <td>
-                {user.name}
-                <br />
-                <small>{user.handle} · {user.userId}</small>
+                <strong>{user.name}</strong>
+                <span className={styles["mod-sub"]}>{user.handle} · {user.userId}</span>
             </td>
             <td>{id}</td>
             <td>
                 {formatDate(start)}
-                <br />
-                <small>{formatTime(start)} CEST</small>
+                <span className={styles["mod-sub"]}>{formatTime(start)} CEST</span>
             </td>
             <td>
                 {end === null ? (
                     <>
                         No expiry
-                        <br />
-                        <small>Permanent ban</small>
+                        <span className={styles["mod-sub"]}>Permanent ban</span>
                     </>
                 ) : (
                     <>
                         {formatDate(end)}
-                        <br />
-                        <small>
+                        <span className={styles["mod-sub"]}>
                             {formatTime(end)} CEST{status === "unbanned" && " · Lifted"}
-                        </small>
+                        </span>
                     </>
                 )}
             </td>
             <td>{reason}</td>
-            <td>{STATUS_LABELS[status]}</td>
+            <td>
+                <span className={`${styles["mod-badge"]} ${styles[`mod-badge-${status}`]}`}>
+                    {STATUS_LABELS[status]}
+                </span>
+            </td>
             <td>
                 <button
-                    className="btn btn-outline-light btn-sm"
+                    className={`btn ${styles["mod-btn-outline"]}`}
                     disabled={!isActiveBan(ban)}
                     onClick={() => onUnban(id)}
                 >

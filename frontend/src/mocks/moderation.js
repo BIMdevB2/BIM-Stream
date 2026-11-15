@@ -124,24 +124,28 @@ export const getModerationStats = (bans, reports, weekly) => {
   return [
     {
       id: "active-bans",
+      icon: "fa-ban",
       label: "Active bans",
       value: temporary + permanent,
       hint: `${temporary} temporary · ${permanent} permanent`,
     },
     {
       id: "open-reports",
+      icon: "fa-flag",
       label: "Open reports",
       value: openReports.length,
       hint: `${priority} require priority review`,
     },
     {
       id: "resolved",
+      icon: "fa-circle-check",
       label: "Resolved this week",
       value: weekly.resolved,
       hint: weekly.resolvedScope,
     },
     {
       id: "lifted",
+      icon: "fa-shield-halved",
       label: "Bans lifted this week",
       value: weekly.liftedExpired + weekly.liftedAppeal,
       hint: `${weekly.liftedExpired} expired · ${weekly.liftedAppeal} successful appeal`,

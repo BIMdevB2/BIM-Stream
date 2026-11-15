@@ -1,7 +1,8 @@
 import { useState } from "react";
 import {
-    BAN_FORM_DEFAULTS, DURATION_OPTIONS, computeBanEnd, formatDate, formatTime,
+    BAN_FORM_DEFAULTS, DURATION_OPTIONS, CURRENT_ADMIN, computeBanEnd, formatDate, formatTime,
 } from "../../../mocks/moderation.js";
+import styles from "../pages/ModerationPage.module.css";
 
 function BanForm({ onBan }) {
     const [form, setForm] = useState(BAN_FORM_DEFAULTS);
@@ -28,27 +29,32 @@ function BanForm({ onBan }) {
     }
 
     return (
-        <form onSubmit={handleSubmit}>
+        <form className={`${styles["mod-card"]} h-100`} onSubmit={handleSubmit}>
             <h4>Ban a user</h4>
-            <p>Restrict a community account. An audit record is created for every action.</p>
+            <p className={styles["mod-muted"]}>
+                Restrict a community account. An audit record is created for every action.
+            </p>
 
-            <div className="row g-3">
-                <div className="col-md-6">
-                    <label className="form-label" htmlFor="userId">User ID</label>
-                    <input
-                        id="userId"
-                        className="form-control"
-                        name="userId"
-                        placeholder="USR-0847"
-                        value={form.userId}
-                        onChange={handleChange}
-                    />
+            <div className={styles["mod-form-grid"]}>
+                <div>
+                    <label className={styles["mod-label"]} htmlFor="userId">User ID</label>
+                    <div className={styles["mod-field"]}>
+                        <i className="fa-regular fa-user"></i>
+                        <input
+                            id="userId"
+                            className={`form-control ${styles["mod-input"]}`}
+                            name="userId"
+                            placeholder="USR-0847"
+                            value={form.userId}
+                            onChange={handleChange}
+                        />
+                    </div>
                 </div>
-                <div className="col-md-6">
-                    <label className="form-label" htmlFor="duration">Duration</label>
+                <div>
+                    <label className={styles["mod-label"]} htmlFor="duration">Duration</label>
                     <select
                         id="duration"
-                        className="form-select"
+                        className={`form-select ${styles["mod-input"]}`}
                         name="duration"
                         value={form.duration}
                         onChange={handleChange}
@@ -59,28 +65,34 @@ function BanForm({ onBan }) {
                     </select>
                 </div>
 
-                <div className="col-md-6">
-                    <label className="form-label">Start</label>
-                    <input
-                        className="form-control"
-                        readOnly
-                        value={`${formatDate(start)} · ${formatTime(start)}`}
-                    />
+                <div>
+                    <label className={styles["mod-label"]}>Start</label>
+                    <div className={styles["mod-field"]}>
+                        <i className="fa-regular fa-calendar"></i>
+                        <input
+                            className={`form-control ${styles["mod-input"]}`}
+                            readOnly
+                            value={`${formatDate(start)} · ${formatTime(start)}`}
+                        />
+                    </div>
                 </div>
-                <div className="col-md-6">
-                    <label className="form-label">End</label>
-                    <input
-                        className="form-control"
-                        readOnly
-                        value={end ? `${formatDate(end)} · ${formatTime(end)}` : "No expiry"}
-                    />
+                <div>
+                    <label className={styles["mod-label"]}>End</label>
+                    <div className={styles["mod-field"]}>
+                        <i className="fa-regular fa-calendar"></i>
+                        <input
+                            className={`form-control ${styles["mod-input"]}`}
+                            readOnly
+                            value={end ? `${formatDate(end)} · ${formatTime(end)}` : "No expiry"}
+                        />
+                    </div>
                 </div>
 
-                <div className="col-12">
-                    <label className="form-label" htmlFor="reason">Reason</label>
+                <div className={styles["mod-span-2"]}>
+                    <label className={styles["mod-label"]} htmlFor="reason">Reason</label>
                     <input
                         id="reason"
-                        className="form-control"
+                        className={`form-control ${styles["mod-input"]}`}
                         name="reason"
                         placeholder="Repeated harassment after a warning"
                         value={form.reason}
@@ -89,7 +101,14 @@ function BanForm({ onBan }) {
                 </div>
             </div>
 
-            <button type="submit" className="btn btn-warning mt-3">Ban user</button>
+            <div className="d-flex justify-content-between align-items-center mt-3">
+                <small className={styles["mod-muted"]}>
+                    You're acting as {CURRENT_ADMIN.name} · {CURRENT_ADMIN.id}, not as a community profile.
+                </small>
+                <button type="submit" className={`btn ${styles["mod-btn-primary"]}`}>
+                    <i className="fa-solid fa-ban me-2"></i>Ban user
+                </button>
+            </div>
         </form>
     );
 }
