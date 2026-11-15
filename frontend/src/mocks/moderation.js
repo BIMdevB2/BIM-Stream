@@ -1,8 +1,10 @@
+// ---------- Données brutes (listées telles quelles) ----------
+
 export const CURRENT_ADMIN = { id: "ADM-001", name: "B.I.M Admin" };
 
-// Dates ISO (fuseau Paris, CEST october)
+// Dates en ISO (fuseau Paris, CEST en octobre) : le composant se charge de l'affichage
 // status : "active" | "permanent" | "expired" | "unbanned"
-// end = null for permanent ban ; for "unbanned", end = date of unban
+// end = null pour un ban permanent ; pour "unbanned", end = date de levée
 export const BANNED_USERS = [
   {
     id: "BAN-1042",
@@ -46,7 +48,7 @@ export const BANNED_USERS = [
   },
 ];
 
-// Reports
+// 7 signalements ouverts dont 2 prioritaires (sert à calculer la StatCard)
 export const REPORTS = [
   { id: "REP-2301", status: "open", priority: true, reason: "Harassment" },
   { id: "REP-2302", status: "open", priority: true, reason: "Hate speech" },
@@ -57,7 +59,7 @@ export const REPORTS = [
   { id: "REP-2307", status: "open", priority: false, reason: "Off-topic" },
 ];
 
-// Stats
+// Chiffres de la semaine qu'on ne peut pas recalculer depuis les listes ci-dessus
 export const WEEKLY_STATS = {
   resolved: 24,
   resolvedScope: "Across live chat and messages",
@@ -65,7 +67,7 @@ export const WEEKLY_STATS = {
   liftedAppeal: 1,
 };
 
-// type : "ban-created" | "ban-lifted" (used in the badges)
+// type : "ban-created" | "ban-lifted" (sert au badge BAN CREATED / BAN LIFTED)
 export const RECENT_ACTIVITY = [
   {
     id: "act-1",
@@ -85,7 +87,7 @@ export const RECENT_ACTIVITY = [
   },
 ];
 
-//
+// Options du select "Duration" du BanForm (days: null = permanent)
 export const DURATION_OPTIONS = [
   { value: "1d", label: "1 day", days: 1 },
   { value: "7d", label: "7 days", days: 7 },
@@ -93,26 +95,26 @@ export const DURATION_OPTIONS = [
   { value: "permanent", label: "Permanent", days: null },
 ];
 
-// Starting form values
+// Valeurs de départ du formulaire
 export const BAN_FORM_DEFAULTS = {
   userId: "",
   duration: "7d",
   reason: "",
 };
 
-// Calculated datas
+// ---------- Données calculées ----------
 
 export const isActiveBan = (ban) =>
   ban.status === "active" || ban.status === "permanent";
 
-// FilterBar : All · Active · Past bans
+// Pour FilterBar : All · Active · Past bans
 export const getBanFilterCounts = (bans) => ({
   all: bans.length,
   active: bans.filter(isActiveBan).length,
   past: bans.filter((b) => !isActiveBan(b)).length,
 });
 
-// for the 4 StatCard
+// Pour les 4 StatCard
 export const getModerationStats = (bans, reports, weekly) => {
   const temporary = bans.filter((b) => b.status === "active").length;
   const permanent = bans.filter((b) => b.status === "permanent").length;
@@ -147,15 +149,13 @@ export const getModerationStats = (bans, reports, weekly) => {
   ];
 };
 
-// BanForm : date of end of ban = start + duration (null if permanent)
+// Pour le BanForm : date de fin = début + durée (null si permanent)
 export const computeBanEnd = (start, days) => {
   if (days === null) return null;
   const end = new Date(start);
   end.setDate(end.getDate() + days);
   return end;
 };
-
-// Used in BannedUserrow and ActivityItem
 
 export const formatDate = (iso) =>
   new Date(iso).toLocaleDateString("en-US", {
