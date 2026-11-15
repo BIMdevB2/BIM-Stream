@@ -17,9 +17,9 @@ export const liveStreams = [
         subscribed: true,
         viewers: "1.8K",
         image:
-            "../../../public/images/street.avif",
+            "images/street.avif",
         avatar:
-            "../../../public/images/Micah.webp",
+            "images/Micah.webp",
     },
     {
         id: "midnight-composition",
@@ -29,9 +29,9 @@ export const liveStreams = [
         subscribed: false,
         viewers: "856",
         image:
-            "../../../public/images/musicStudio.avif",
+            "images/musicStudio.avif",
         avatar:
-            "../../../public/images/dutch.webp",
+            "images/dutch.webp",
     },
     {
         id: "behind-the-scenes",
@@ -41,9 +41,9 @@ export const liveStreams = [
         subscribed: true,
         viewers: "643",
         image:
-            "../../../public/images/IT.avif",
+            "images/IT.avif",
         avatar:
-            "../../../public/images/jhon.webp",
+            "images/jhon.webp",
     },
 ];
 
@@ -53,21 +53,21 @@ export const directMessages = [
         message: "Want to join the Beyond stream tonight?",
         time: "2 min",
         avatar:
-            "../../../public/images/sadie.jpeg",
+            "images/sadie.jpeg",
     },
     {
         name: "Micah Bell",
         message: "Ready for a Night City session?",
         time: "18 min",
         avatar:
-            "../../../public/images/Micah.webp",
+            "images/Micah.webp",
     },
     {
         name: "Javier Escuella",
         message: "Catch you later, going offline for tonight!",
         time: "1 hr",
         avatar:
-            "../../../public/images/javier.jpg",
+            "images/javier.jpg",
     },
 ];
 
@@ -77,13 +77,13 @@ export const liveInvitations = [
         details: "Beyond · Duo stream with Dutch van der Linde",
         time: "21:00",
         avatar:
-            "../../../public/images/sadie.jpeg",
+            "images/sadie.jpeg",
     },
     {
         name: "John Marston",
         details: "Education & Talks · Live Q&A",
         time: "22:30",
         avatar:
-            "../../../public/images/jhon.webp",
+            "images/jhon.webp",
     },
 ];

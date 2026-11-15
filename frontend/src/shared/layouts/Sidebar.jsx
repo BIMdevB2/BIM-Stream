@@ -2,10 +2,11 @@ import { NavLink } from "react-router";
 import { followedChannels } from "../../mocks/followedChannels";
 
 const navigationItems = [
-    { to: "/LivePage", label: "Live", icon: "fa-tower-broadcast", end: true },
-    { to: "/VideoPage", label: "Videos", icon: "fa-clapperboard", end: true },
-    { to: "/MessagesPage", label: "Messages", icon: "fa-comment", count: "3" },
-    { to: "/ProfilePage", label: "My profile", icon: "fa-user", end: true },
+    { to: '/', label: 'Home', icon: 'fa-house', end: true },
+    { to: '/VideoPage', label: 'Video', icon: 'fa-video' },
+    { to: '/MessagesPage', label: 'Messages', icon: 'fa-message' },
+    { to: '/ProfilePage', label: 'My profile', icon: 'fa-user' },
+    { to: '/ModerationPage', label: 'Admin panel', icon: 'fa-screwdriver-wrench' },
 ];
 
 function Sidebar() {
