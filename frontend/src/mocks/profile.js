@@ -3,8 +3,8 @@ export const USER_PROFILE = {
   name: "Arthur Morgan",
   username: "Arthur32_",
   email: "Arthur@exemple.fr",
-  avatarUrl: "/images/arthur.jpeg",
-  bannerUrl: "/images/video3.jpeg",
+  avatarUrl: "images/arthur.jpeg",
+  bannerUrl: "images/video3.jpeg",
   memberSince: "SEPTEMBER 2026",
   stats: {
     channelsFollowed: 24,
@@ -18,10 +18,10 @@ export const WATCH_HISTORY = [
   {
     id: "hist-001",
     title: "A night on the edge of the unknown.",
-    thumbnailUrl: "/images/montain.avif",
+    thumbnailUrl: "images/montain.avif",
     creator: {
       username: "Sadie Adler",
-      avatarUrl: "/images/sadie.jpeg",
+      avatarUrl: "images/sadie.jpeg",
     },
     watchedAt: "Today · 20:41",
     statusText: "Live · Watching now",
@@ -29,10 +29,10 @@ export const WATCH_HISTORY = [
   {
     id: "hist-002",
     title: "Behind the Scenes: How I Create Educational Content",
-    thumbnailUrl: "/images/IT.avif",
+    thumbnailUrl: "images/IT.avif",
     creator: {
       username: "John Marston",
-      avatarUrl: "/images/jhon.webp",
+      avatarUrl: "images/jhon.webp",
     },
     watchedAt: "Today · 18:12",
     statusText: "08:42 of 24:16",
@@ -40,10 +40,10 @@ export const WATCH_HISTORY = [
   {
     id: "hist-003",
     title: "Night City hasn't given up all its secrets (PART 1)",
-    thumbnailUrl: "/images/video6.jpeg",
+    thumbnailUrl: "images/video6.jpeg",
     creator: {
       username: "Micah Bell",
-      avatarUrl: "/images/Micah.webp",
+      avatarUrl: "images/Micah.webp",
     },
     watchedAt: "Yesterday · 22:16",
     statusText: "34:18 of 46:32",
@@ -51,10 +51,10 @@ export const WATCH_HISTORY = [
   {
     id: "hist-004",
     title: "We're composing together until midnight",
-    thumbnailUrl: "/images/musicStudio.avif",
+    thumbnailUrl: "images/musicStudio.avif",
     creator: {
       username: "Dutch van der Linde",
-      avatarUrl: "/images/dutch.webp",
+      avatarUrl: "images/dutch.webp",
     },
     watchedAt: "Oct 8 · 21:30",
     statusText: "Finished · 1:12:08",
@@ -65,11 +65,11 @@ export const POSTED_VIDEOS = [
   {
     id: "video-101",
     title: "A study in light and shadows",
-    thumbnailUrl: "/images/video4.jpeg",
+    thumbnailUrl: "images/video4.jpeg",
     creator: {
       id: "USR-0032",
       username: "Arthur Morgan",
-      avatarUrl: "/images/arthur.jpeg",
+      avatarUrl: "images/arthur.jpeg",
       verified: true,
     },
     views: 246,
@@ -81,11 +81,11 @@ export const POSTED_VIDEOS = [
   {
     id: "video-102",
     title: "Night walks: a city after dark",
-    thumbnailUrl: "/images/video3.jpeg",
+    thumbnailUrl: "images/video3.jpeg",
     creator: {
       id: "USR-0032",
       username: "Arthur Morgan",
-      avatarUrl: "/images/arthur.jpeg",
+      avatarUrl: "images/arthur.jpeg",
       verified: true,
     },
     views: 183,
@@ -97,11 +97,11 @@ export const POSTED_VIDEOS = [
   {
     id: "video-103",
     title: "Sounds of a quiet evening",
-    thumbnailUrl: "/images/video1.jpeg",
+    thumbnailUrl: "images/video1.jpeg",
     creator: {
       id: "USR-0032",
       username: "Arthur Morgan",
-      avatarUrl: "/images/arthur.jpeg",
+      avatarUrl: "images/arthur.jpeg",
       verified: true,
     },
     views: 92,

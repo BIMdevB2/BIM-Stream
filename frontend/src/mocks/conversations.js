@@ -16,8 +16,8 @@ export const liveStreams = [
     category: "Video games",
     subscribed: true,
     viewers: "1.8K",
-    image: "../../../public/images/street.avif",
-    avatar: "../../../public/images/Micah.webp",
+    image: "images/street.avif",
+    avatar: "images/Micah.webp",
   },
   {
     id: "midnight-composition",
@@ -26,8 +26,8 @@ export const liveStreams = [
     category: "Music",
     subscribed: false,
     viewers: "856",
-    image: "../../../public/images/musicStudio.avif",
-    avatar: "../../../public/images/dutch.webp",
+    image: "images/musicStudio.avif",
+    avatar: "images/dutch.webp",
   },
   {
     id: "behind-the-scenes",
@@ -36,8 +36,8 @@ export const liveStreams = [
     category: "Cinema & creation",
     subscribed: true,
     viewers: "643",
-    image: "../../../public/images/IT.avif",
-    avatar: "../../../public/images/jhon.webp",
+    image: "images/IT.avif",
+    avatar: "images/jhon.webp",
   },
 ];
 
@@ -46,19 +46,19 @@ export const directMessages = [
     name: "Sadie Adler",
     message: "Want to join the Beyond stream tonight?",
     time: "2 min",
-    avatar: "../../../public/images/sadie.jpeg",
+    avatar: "images/sadie.jpeg",
   },
   {
     name: "Micah Bell",
     message: "Ready for a Night City session?",
     time: "18 min",
-    avatar: "../../../public/images/Micah.webp",
+    avatar: "images/Micah.webp",
   },
   {
     name: "Javier Escuella",
     message: "Catch you later, going offline for tonight!",
     time: "1 hr",
-    avatar: "../../../public/images/javier.jpg",
+    avatar: "images/javier.jpg",
   },
 ];
 
@@ -67,13 +67,13 @@ export const liveInvitations = [
     name: "Sadie Adler",
     details: "Beyond · Duo stream with Dutch van der Linde",
     time: "21:00",
-    avatar: "../../../public/images/sadie.jpeg",
+    avatar: "images/sadie.jpeg",
   },
   {
     name: "John Marston",
     details: "Education & Talks · Live Q&A",
     time: "22:30",
-    avatar: "../../../public/images/jhon.webp",
+    avatar: "images/jhon.webp",
   },
 ];
 
@@ -81,7 +81,7 @@ export const CURRENT_USER = {
   id: "arthur",
   name: "Arthur Morgan",
   handle: "@Arthur32_",
-  avatar: "/images/arthur.jpeg",
+  avatar: "images/arthur.jpeg",
 };
 
 export const MOCK_CONVERSATIONS = [
@@ -97,7 +97,7 @@ export const MOCK_CONVERSATIONS = [
       category: "Creation & cinema",
       online: true,
       verified: true,
-      avatar: "/images/sadie.jpeg",
+      avatar: "images/sadie.jpeg",
     },
     lastMessage: {
       text: "Perfect. See you in the live!",
@@ -158,7 +158,7 @@ export const MOCK_CONVERSATIONS = [
       category: "Video games",
       online: true,
       verified: false,
-      avatar: "/images/Micah.webp",
+      avatar: "images/Micah.webp",
     },
     lastMessage: {
       text: "Ready for a Night City session?",
@@ -198,7 +198,7 @@ export const MOCK_CONVERSATIONS = [
       category: "Art & discussion",
       online: false,
       verified: true,
-      avatar: "/images/dutch.webp",
+      avatar: "images/dutch.webp",
     },
     lastMessage: {
       text: "You: Sounds awesome, see you at 21:00!",
@@ -245,7 +245,7 @@ export const MOCK_CONVERSATIONS = [
       category: "Education",
       online: false,
       verified: false,
-      avatar: "/images/jhon.webp",
+      avatar: "images/jhon.webp",
     },
     lastMessage: {
       text: "You: Anytime man, keep it up!",
@@ -292,7 +292,7 @@ export const MOCK_CONVERSATIONS = [
       category: "Music & live",
       online: false,
       verified: false,
-      avatar: "/images/javier.jpg",
+      avatar: "images/javier.jpg",
     },
     lastMessage: {
       text: '"Hey Arthur, want to exchange a few ideas for the next stream?"',
