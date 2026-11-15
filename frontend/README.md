@@ -67,7 +67,8 @@ bim-stream-frontend/
 │   │   ├── providers.jsx
 │   │   └── layouts/
 │   │       ├── AuthLayout.jsx
-│   │       └── AppLayout.jsx
+│   │       ├── AppLayout.jsx
+│   │       └── 
 │   ├── features/
 │   │   ├── auth/
 │   │   │   ├── pages/
