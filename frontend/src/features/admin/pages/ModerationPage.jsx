@@ -82,9 +82,6 @@ function ModerationPage() {
                     <p className={`${styles["mod-muted"]} ${styles["mod-breadcrumb"]}`}>
                         Administration / Moderation
                     </p>
-                    <p className={styles["mod-muted"]}>
-                        Review community activity and manage access with care.
-                    </p>
                 </div>
                 <span className={styles["mod-tag"]}>ADMIN WORKSPACE</span>
             </div>

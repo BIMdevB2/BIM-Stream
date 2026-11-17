@@ -18,17 +18,6 @@ function HomePage() {
 
     return (
         <div className="discovery-page">
-            <header className="discovery-heading">
-                <div>
-                    <h1>Live, differently.</h1>
-                    <p>Worlds to explore. Creators to meet. Your evening starts here.</p>
-                </div>
-                <span className="discovery-viewers">
-                    <span aria-hidden="true" />
-                    12,408 viewers online
-                </span>
-            </header>
-
             <FeaturedContent />
             <MoodFilters
                 categories={categories}
