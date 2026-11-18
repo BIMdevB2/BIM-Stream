@@ -1,396 +1,274 @@
-# B.I.M Stream — Frontend Organization
+# B.I.M Stream — Frontend
 
-## 1. Overview and goals
+## 1. Overview
 
-B.I.M Stream (Be In your Mood Stream) is an application where users can publish videos,
-watch and broadcast live streams, react to content, and participate in conversations.
+B.I.M Stream (Be In your Mood Stream) is a React application for discovering content, watching videos, following live streams, joining conversations, viewing profiles, and moderating users.
 
-The frontend will be developed in ReactJS.
+The frontend uses React 19, Vite, and React Router. It is a single-page application currently powered primarily by mock data.
 
-We use a **feature-based** organization: each contibutor owns a coherent user journey,
-while the application structure and reusable UI components are shared.
+The source code is organized by feature:
 
-Goals:
+- each feature contains its pages and components;
+- shared components are placed under `src/shared/`;
+- local demonstration data is placed under `src/mocks/`;
+- components mainly use CSS Modules or existing global stylesheets.
 
-- Avoid building three visually inconsistent interfaces.
-- Reduce simultaneous changes to the same files.
-- Reuse useful components and logic.
-- Integrate everyone's work regularly.
-- Make progress with mock data before the backend is available.
+## 2. Technologies
 
-The routes, filenames, colors, and contracts below are proposals to agree on together.
-Details that are difficult to read in the screenshot should be checked against the original designs.
+- React 19
+- React DOM 19
+- React Router 8
+- Vite 8
+- Bootstrap 6
+- Font Awesome
+- CSS Modules
 
-## 2. Pages and routes
+## 3. Installation and Commands
 
-| Screen                             | React page         | Proposed route                                  |
-| ---------------------------------- | ------------------ | ----------------------------------------------- |
-| 1 — Registration                  | `RegisterPage`   | `/register`                                   |
-| 2 — Login                         | `LoginPage`      | `/login`                                      |
-| 3 — Home / discovery              | `HomePage`       | `/`                                           |
-| 4 — Live stream and chat          | `LivePage`       | `/live/:streamId`                             |
-| 5 — Video on demand               | `VideoPage`      | `/videos/:videoId`                            |
-| 6 — Private messages              | `MessagesPage`   | `/messages` and `/messages/:conversationId` |
-| 7 — User profile                  | `ProfilePage`    | `/users/:username`                            |
-| 8 — Moderation and administration | `ModerationPage` | `/admin/moderation`                           |
+Run the following commands from the `frontend` directory:
 
-Before implementing each screen, identify reusable elements: top bar, sidebar, video cards, avatars, buttons, and forms.
-
-Follow this sequence:
-
-1. Break down the design into components.
-2. Build a static version using the data model.
-3. Add interactions and state.
-
-## 3. Component categories
-
-| Category                   | Examples                                                | Location                    |
-| -------------------------- | ------------------------------------------------------- | --------------------------- |
-| Generic UI components      | `Button`, `Input`, `Avatar`, `Modal`, `Badge` | `shared/ui/`              |
-| Reusable domain components | `VideoCard`, `VideoPlayer`, `ReactionBar`         | Inside the relevant feature |
-| Page-specific components   | `ModerationQueue`, `ProfileHeader`, `LiveChat`    | Inside the relevant feature |
-
-A component used only once can stay local. Do not try to make everything generic from the start.
-
-## 4. Recommended directory structure
-
-This example uses JavaScript and JSX.
-
+```bash
+npm install
 ```
-bim-stream-frontend/
+
+Available scripts:
+
+```bash
+npm run dev      # Vite development server
+npm run build    # production build in dist/
+npm run lint     # ESLint validation
+npm run preview  # preview the production build
+```
+
+## 4. Screens and Current Routes
+
+Routes are declared in `src/app/router.jsx`.
+
+| Screen | Component | Route |
+| --- | --- | --- |
+| Login | `LoginPage` | `/LoginPage` |
+| Registration | `RegisterPage` | `/RegisterPage` |
+| Home | `HomePage` | `/` |
+| Video | `VideoPage` | `/VideoPage` |
+| Live stream | `LivePage` | `/LivePage` |
+| Messages | `MessagesPage` | `/MessagesPage` |
+| Profile | `ProfilePage` | `/ProfilePage` |
+| Moderation | `ModerationPage` | `/ModerationPage` |
+
+The current pages are static or controlled with local component state. Dynamic routes previously proposed, such as `/videos/:videoId`, `/live/:streamId`, `/users/:username`, and `/messages/:conversationId`, are not yet configured.
+
+Unknown routes are rendered by `PageNotFound`.
+
+## 5. Current Directory Structure
+
+```text
+frontend/
 ├── public/
 │   └── images/
 ├── src/
 │   ├── app/
 │   │   ├── App.jsx
 │   │   ├── router.jsx
-│   │   ├── providers.jsx
 │   │   └── layouts/
-│   │       ├── AuthLayout.jsx
 │   │       ├── AppLayout.jsx
-│   │       └── 
+│   │       └── AuthLayout.jsx
 │   ├── features/
+│   │   ├── admin/
 │   │   ├── auth/
-│   │   │   ├── pages/
-│   │   │   │   ├── LoginPage.jsx
-│   │   │   │   └── RegisterPage.jsx
-│   │   │   ├── components/
-│   │   │   │   ├── auth.module.css
-│   │   │   │   ├── FormField.jsx 
-│   │   │   │   └── SocialButtons.jsx
-│   │   │   ├── hooks/
-│   │   │   ├── api/
-│   │   │   │   └── auth.api.js
-│   │   │   ├── authPages.js
-│   │   │   └── AuthProvider.jsx
 │   │   ├── discovery/
-│   │   │   ├── pages/
-│   │   │   │   └── HomePage.jsx
-│   │   │   └── components/
-│   │   │       ├── FeaturedContent.jsx
-│   │   │       └── MoodFilters.jsx
-│   │   ├── videos/
-│   │   │   ├── pages/
-│   │   │   │   └── VideoPage.jsx
-│   │   │   ├── components/
-│   │   │   │   ├── VideoCard.jsx
-│   │   │   │   ├── VideoPlayer.jsx
-│   │   │   │   └── VideoGrid.jsx
-│   │   │   ├── hooks/
-│   │   │   └── api/
-│   │   │       └── videos.api.js
-│   │   ├── live/
-│   │   │   ├── pages/
-│   │   │   │   └── LivePage.jsx
-│   │   │   ├── components/
-│   │   │   │   ├── LiveChat.jsx
-│   │   │   │   └── StreamInfo.jsx
-│   │   │   ├── hooks/
-│   │   │   └── api/
 │   │   ├── interactions/
-│   │   │   ├── components/
-│   │   │   │   ├── ReactionBar.jsx
-│   │   │   │   └── CommentThread.jsx
-│   │   │   └── api/
+│   │   ├── live/
 │   │   ├── messages/
-│   │   │   ├── pages/
-│   │   │   │   └── MessagesPage.jsx
-│   │   │   ├── components/
-│   │   │   │   ├── ConversationList.jsx
-│   │   │   │   ├── MessageThread.jsx
-│   │   │   │   └── MessageComposer.jsx
-│   │   │   ├── hooks/
-│   │   │   └── api/
 │   │   ├── profile/
-│   │   │   ├── pages/
-│   │   │   │   └── ProfilePage.jsx
-│   │   │   ├── components/
-│   │   │   │   └── ProfileHeader.jsx
-│   │   │   └── api/
-│   │   └── moderation/
-│   │       ├── pages/
-│   │       │   └── ModerationPage.jsx
-│   │       ├── components/
-│   │       │   ├── ModerationQueue.jsx
-│   │       │   └── ReportDetails.jsx
-│   │       └── api/
-│   ├── shared/
-│   │   ├── ui/
-│   │   │   ├── Button/
-│   │   │   ├── Input/
-│   │   │   ├── Avatar/
-│   │   │   ├── Modal/
-│   │   │   └── Badge/
-│   │   ├── layout/
-│   │   │   ├── Header.jsx
-│   │   │   └── Sidebar.jsx
-│   │   ├── api/
-│   │   │   └── client.js
-│   │   ├── hooks/
-│   │   ├── utils/
-│   │   ├── styles/
-│   │   │   ├── tokens.css
-│   │   │   └── global.css
-│   │   └── pages/
-│   │       └── PageNotFound.jsx
-│   │  
+│   │   └── videos/
 │   ├── mocks/
-│   │   ├── users.js
-│   │   ├── videos.js
-│   │   ├── streams.js
-│   │   └── conversations.js
-│   ├── assets/
+│   ├── shared/
+│   │   ├── layouts/
+│   │   ├── pages/
+│   │   ├── Styles/
+│   │   └── ui/
 │   ├── App.css
 │   ├── index.css
 │   └── main.jsx
-├── tests/
-│   └── e2e/
-├── .env.example
+├── index.html
 ├── package.json
 └── README.md
 ```
 
-### Keep styles and tests next to their components
+The `interactions/` directory and several `hooks/`, `api/`, and `ui/` directories currently contain `.gitkeep` files or placeholders for future development.
 
-```
-VideoCard.jsx
-VideoCard.module.css
-VideoCard.test.jsx
-```
+## 6. Implemented Features
 
-Create `hooks/`, `api/`, and `components/` directories only when needed. This structure is a target, not a requirement to create empty folders immediately.
+### Authentication
 
-### Dependency rules
+- login and registration forms;
+- authentication layout with a contextual visual;
+- local state for form fields;
+- reusable social buttons;
+- structure prepared for future validation and session management.
 
-- `shared/` must not depend on any feature.
-- A page assembles components; it should not contain all of the screen's logic.
-- Network requests go through `api/` files, rather than being implemented directly in every button.
-- Domain components stay in their feature even when reused elsewhere: `VideoCard` stays in `videos/`, including when displayed on a profile.
-- If two features start importing each other, extract their shared part or coordinate them through the page that assembles them.
+### Discovery
 
-## 5. Shared layouts
+- home page;
+- mood filters;
+- featured content;
+- active live streams;
+- upcoming event;
+- community panel;
+- data sourced from `src/mocks/discovery.js`.
 
-```
-AuthLayout
-├── Visual / introduction
-└── Login or registration form
+### Videos
 
-AppLayout
-├── Header
-├── Sidebar
-└── Page content
-```
+- video player;
+- video information;
+- comments;
+- upcoming videos;
+- locally managed ratings, following, comments, and autoplay;
+- data sourced from `src/mocks/videos.js`.
 
-Do not copy the header and navigation into every internal page.
+### Live Streaming
 
-With React Router, use nested routes and `<Outlet />` inside layouts to render child pages. Navigation changes can then be made in one place.
+- live page;
+- stream information;
+- chat with tabs;
+- reactions and local messages;
+- data sourced from `src/mocks/stream.js` and `src/mocks/initialMessages.js`.
 
-## 6. Work allocation
+### Private Messages
 
-Each teammate should deliver complete functionality: interface, states, integration, and tests. Avoid a rigid split such as one person handling CSS, another components, and another APIs.
+- conversation list;
+- local search and filters;
+- message history;
+- message composer;
+- data sourced from `src/mocks/conversations.js`.
 
-| Owner      | Main scope                                            | Related shared elements                         |
-| ---------- | ----------------------------------------------------- | ----------------------------------------------- |
-| Teammate A | Registration, login, profile                          | Forms, avatars, session management              |
-| Teammate B | Home, video on demand                                 | Video cards, player, grids, reactions, comments |
-| Teammate C | Live streaming and chat, private messages, moderation | Message composition, lists, moderation table    |
+### Profile
 
-### Balance the workload
+- profile header;
+- published videos;
+- watch history;
+- local tabs;
+- data sourced from `src/mocks/profile.js`.
 
-This allocation groups related components, but C's scope may be more complex because of real-time features and moderation.
+### Administration
 
-- A helps with moderation after completing authentication and profile work.
-- B provides a player that can be used by both VOD and live pages.
-- C keeps public live chat and private messaging distinct, even when visual components are shared.
-- Reassess the workload after estimating tasks.
+- moderation statistics;
+- banned-user list;
+- search and filters;
+- ban form;
+- unban action;
+- recent activity;
+- data sourced from `src/mocks/moderation.js`.
 
-Being the main owner means coordinating and reviewing, not being the only person allowed to edit the files.
+## 7. Layouts
 
-## 7. Establish a common foundation first
+`AuthLayout` wraps the login and registration pages with a dedicated presentation.
 
-### Decisions to make together
+`AppLayout` provides:
 
-- [X] A shared styling approach, such as CSS Modules.
-- [X] Icon library.
-- [X] Route names.
-- [X] Data and error formats.
-- [X] Base components and visual rules.
-- [X] Verification commands and Git conventions.
+- a header;
+- a sidebar;
+- a content area rendered by React Router through `<Outlet />`.
 
-### Design tokens
+The `Header` and `Sidebar` components are centralized in `src/shared/layouts/`.
 
-Centralize colors, spacing, and border randing in `shared/styles/tokens.css`.
+## 8. Mock Data
 
-```css
-:root {
-  --color-bg: #0b0d10;
-  --color-surface: #14181f;
-  --color-border: #282e38;
-  --color-text: #f5f6f8;
-  --color-muted: #9ca3af;
-  --color-primary: #ff8a24;
+Local data is maintained in `src/mocks/`:
 
-  --radius-sm: 6px;
-  --radius-md: 10px;
+- `conversations.js`
+- `discovery.js`
+- `followedChannels.js`
+- `initialMessages.js`
+- `moderation.js`
+- `profile.js`
+- `reactions.js`
+- `stream.js`
+- `videos.js`
 
-  --space-1: 4px;
-  --space-2: 8px;
-  --space-3: 12px;
-  --space-4: 16px;
-  --space-6: 24px;
-}
-```
+Most interactions use `useState` or local hooks. They are not persisted or connected to a backend.
 
-### Initial work allocation
+## 9. Styles
 
-| Teammate | Initial work                              |
-| -------- | ----------------------------------------- |
-| A        | Forms, buttons, inputs                    |
-| B        | Cards, player foundation, mock video data |
-| C        | Layout, navigation, route list            |
+The main styles are distributed across:
 
-Review this foundation together before building all screens.
+- `src/App.css`;
+- `src/index.css`;
+- component-adjacent `.module.css` files;
+- `src/shared/Styles/tokens.css`.
 
-## 8. Data contracts and backend integration
+The actual directory name is `Styles` with a capital letter. Imports must match this exact case on systems with case-sensitive file systems, including Linux and macOS.
 
-Agree on data shapes and component interfaces early so everyone can work in parallel.
+`tokens.css` centralizes radii, spacing, and colors specific to private messages. Other colors used by the header, sidebar, and screens remain distributed across the existing stylesheets.
 
-### Example video data
+## 10. Network and API Dependencies
 
-```js
-const video = {
-  id: "video-001",
-  title: "A night on the edge of the unknown",
-  thumbnailUrl: "/images/video-001.jpg",
-  playbackUrl: "/media/demo.mp4",
-  creator: {
-    id: "user-001",
-    username: "arthur",
-    avatarUrl: "/images/avatar-001.jpg",
-  },
-  views: 1240,
-  durationSeconds: 480,
-};
-```
+The frontend does not currently contain a complete API layer or an operational shared `api/` directory.
 
-These URLs are illustrative: the corresponding assets must be provided before they can be used.
+Future backend integration should:
 
-### Example player interface
+- centralize requests in `api/` modules or a shared client;
+- use consistent contracts for data and errors;
+- handle loading, success, error, and empty states;
+- protect administration routes according to backend permissions;
+- progressively replace mock data.
 
-```jsx
-<VideoPlayer
-  src={video.playbackUrl}
-  poster={video.thumbnailUrl}
-  isLive={false}
-/>
+## 11. Validation Status
+
+The frontend can be compiled with:
+
+```bash
+npm run build
 ```
 
-Teammates should understand the accepted props without reading the entire component implementation.
+At this stage:
 
-## 9. Git workflow
+- no automated tests are committed;
+- no `.env.example` file is present;
+- the `tests/` and `tests/e2e/` directories have not yet been created;
+- ESLint issues should be checked with `npm run lint`;
+- user journeys should be checked in the browser after changes.
 
-### Short-lived branches per task
+## 12. Recommended Structure for Future Development
+
+Add only the directories required by a feature:
 
 ```text
-main
-├── feat/auth-pages
-├── feat/home-feed
-├── feat/videos
-├── feat/private-messages
-└── feat/user-profile
+src/features/<feature>/
+├── components/
+├── hooks/
+├── pages/
+└── api/
 ```
 
-Rules:
+Follow these rules:
 
-- Keep `main` reusable.
-- Each branch covers a limited task, not several weeks of work.
-- Submit every change through a pull request.
-- Have another teammate review before merging.
-- Announce changes to shared components to the other teammates.
-- Protect `main` and configure required approvals and checks when these options are available for the repository.
+- feature-specific components remain in their feature;
+- `shared/` must not depend on any feature;
+- a page assembles components and does not contain all complex logic;
+- network requests pass through an API layer;
+- styles and tests remain close to their components;
+- reusable components are only created when a real need exists.
 
-### Pull request template
+## 13. Route Convention
 
-```text
-Goal*:
-Affected page or feature*:
+A future evolution can align routes with readable URLs:
 
-Changes*:
-- ...
+| Screen | Proposed Route |
+| --- | --- |
+| Login | `/login` |
+| Registration | `/register` |
+| Home | `/` |
+| Video | `/videos/:videoId` |
+| Live stream | `/live/:streamId` |
+| Messages | `/messages` and `/messages/:conversationId` |
+| Profile | `/users/:username` |
+| Moderation | `/admin/moderation` |
 
-Screenshot: (optional)
-Remaining work: (optional)
-```
+This convention requires simultaneous updates to the router, navigation, internal links, and tests.
 
-### Example: splitting messaging work
+## 14. References
 
-Avoid one pull request for the entire messaging feature. Prefer:
-
-1. Visual structure.
-2. Conversation selection.
-3. Message history integration.
-4. Sending and receiving.
-5. Error handling and reconnection.
-
-## 10. Development phases
-
-| Phase                   | Work                                                    | Expected outcome              |
-| ----------------------- | ------------------------------------------------------- | ----------------------------- |
-| 1 — Foundation         | Project setup, styles, layouts, routes, base components | Navigable application         |
-| 2 — Static version     | Eight screens with mock data                            | Visually consistent interface |
-| 3 — Local interactions | Forms, tabs, filters, conversation selection            | Testable user journeys        |
-| 4 — Integration        | Session, API, video playback, real-time functionality   | Connected features            |
-| 5 — Validation         | Errors, permissions, responsive behavior, tests         | Demo-ready version            |
-
-Do not leave live playback and real-time integration until the end. Run an early technical proof of concept with the intended backend solution, even during the static phase.
-
-## 11. Definition of done
-
-A page is not finished simply because it looks like the screenshot.
-
-- [ ] The route works, including direct access.
-- [ ] The UI matches the design and agreed viewport sizes.
-- [ ] Expected interactions work.
-- [ ] Loading, empty, error, and success states are handled where relevant.
-- [ ] Forms display useful errors.
-- [ ] Keyboard navigation and labels have been checked.
-- [ ] Relevant tests and project checks pass.
-- [ ] Another teammate has reviewed and tried the user journey.
-
-For administration, distinguish the interface from permissions: plan validation with the backend team for both authorized access and rejected actions.
-
-## 12. Daily coordination
-
-Hold a daily check-in of approximately ten minutes:
-
-1. What has been integrated.
-2. What comes next.
-3. Blockers.
-4. Shared components that may change.
-
-The priority is to deliver a coherent application regularly, rather than assembling three large blocks only at the end.
-
-## 13. Reference documentation
-
-- [React — Thinking in React](https://react.dev/learn/thinking-in-react): breaking down designs, building a static version, and managing state.
-- [React Router — Routing](https://reactrouter.com/start/declarative/routing): nested routes and layouts.
+- [React](https://react.dev/)
+- [React Router](https://reactrouter.com/)
+- [Vite](https://vite.dev/)
