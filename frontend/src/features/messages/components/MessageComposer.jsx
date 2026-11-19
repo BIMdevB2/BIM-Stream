@@ -1,11 +1,18 @@
 import { useState } from "react";
 import styles from "./MessageComposer.module.css";
 
-export default function MessageComposer({ recipientName = "Sadie" }) {
+export default function MessageComposer({
+  recipientName = "Sadie",
+  onSendMessage,
+}) {
   const [text, setText] = useState("");
 
-  function handleSubmit() {
+  function handleSubmit(e) {
+    e.preventDefault();
     if (!text.trim()) return;
+    if (onSendMessage) {
+      onSendMessage(text.trim());
+    }
     setText("");
   }
 

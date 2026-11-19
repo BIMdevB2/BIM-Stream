@@ -42,6 +42,38 @@ export default function MessagesPage() {
     }
   }
 
+  function handleSendMessage(text) {
+    if (!selectedId) return;
+
+    const currentTime = new Date().toLocaleTimeString([], {
+      hour: "2-digit",
+      minute: "2-digit",
+    });
+
+    const newMessage = {
+      id: `msg-${Date.now()}`,
+      senderId: CURRENT_USER.id,
+      text,
+      time: currentTime,
+      read: false,
+    };
+
+    setConversations((prev) =>
+      prev.map((conv) =>
+        conv.id === selectedId
+          ? {
+              ...conv,
+              lastMessage: {
+                text: `You: ${text}`,
+                time: currentTime,
+              },
+              messages: [...(conv.messages || []), newMessage],
+            }
+          : conv,
+      ),
+    );
+  }
+
   return (
     <div className={styles.page}>
       <div className="d-flex align-items-end justify-content-between mb-4">
@@ -76,7 +108,10 @@ export default function MessagesPage() {
               conversation={activeConversation}
               currentUser={CURRENT_USER}
             >
-              <MessageComposer recipientName={firstName} />
+              <MessageComposer
+                recipientName={firstName}
+                onSendMessage={handleSendMessage}
+              />
             </MessageThread>
           ) : (
             <div className="d-flex flex-column align-items-center justify-content-center h-100 text-center p-4">
